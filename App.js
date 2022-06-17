@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity} from 'react-native';
-import Inicio from './screens/inicio';
- 
+import Main from './navigation/Main';
+
 export default function App() {
-  
+
   return (
-    <Inicio />
+   
+    <Main/>
+ 
   );
 }
+
+
+
+
+
+
+
+
+
+
+
