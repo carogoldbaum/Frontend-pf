@@ -1,24 +1,19 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import NavigationContainer from '@react-navigation/native';
-import Inicio from '../screens/inicio'
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import Inicio from '../screens/Inicio'
 
 const Stack = createNativeStackNavigator()
 
-const main =()=>{
+const Main =()=>{
    
 return(
-    <NavigationContainer>
-        <Stack.Navigator>
+ 
+   
+        <Inicio/>
 
-            <Stack.Screen
-                name='inicio'
-                component={ Inicio }
-            />
-
-        </Stack.Navigator>
-    </NavigationContainer>
 )
 }
 
-export default main
+export default Main

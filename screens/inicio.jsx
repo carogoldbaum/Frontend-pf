@@ -1,28 +1,34 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, Button, TouchableOpacity} from 'react-native';
+import React, { Component, useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Image, ImageBackground, InlineImage, TouchableOpacity} from 'react-native';
 import logo from "../assets/logo.png";
 import fondo from "../assets/fondo.jpg";
-import Boton from "../components/Boton";
+import Boton_1 from "../components/Boton_1";
+import Boton_2 from "../components/Boton_2";
+import LogoTexto from "../components/LogoTexto";
+import * as font from 'expo-font';
+
 import { useNavigation } from '@react-navigation/native';
 
- 
+
 const Inicio =({navigation})=>{
   
   return (
     
     <View>
+
       <ImageBackground source={fondo} style={styles.image}>
-      <Image style={styles.logo} source={logo}></Image>
-      <Text style={styles.titulo}>ConApp</Text>
-      
-      <Boton
-      text="Iniciar sesion" 
+        
+      <LogoTexto>
+      </LogoTexto>
+
+      <Boton_1 style={{ fontSize: 48}}
+      text="INICIAR SESION" 
       onPress={ () =>{
         navigation.navigate('IniciarSesion')
       }}
       />
-     <Boton 
-      text="Registrarse" 
+     <Boton_2
+      text="REGISTRARSE" 
       onPress={ () =>{
         navigation.navigate('Registrarse')
       }}
@@ -37,23 +43,12 @@ const Inicio =({navigation})=>{
 export default Inicio
 
 const styles = StyleSheet.create({
-  logo: {
-    width: '40%',
-    height: '25%',
-    position: 'absolute',
-    top: '20%',
-    left:'15%'
-},
+
   image: {
     height:'100%',
+    width: '100%',
     alignItems: 'center',
-  },
-  titulo: {
-    position: 'absolute',
-    top: '45%',
-    color: 'blue',
-    fontSize: 20,
-    alignItems: 'right',
+    
   },
 });
 
