@@ -4,12 +4,12 @@ import logo from "../assets/logo.png";
 import fondo from "../assets/fondo.jpg";
 import LogoTexto from "../components/LogoTexto";
 import * as font from 'expo-font';
-import botonContratar from "../components/botonContratar";
+import BotonContratar from "../components/BotonContratar";
 
 import { useNavigation } from '@react-navigation/native';
 
 
-const seleccionarUsuario =({navigation})=>{
+const SeleccionarUsuario =({navigation})=>{
   
   return (
     
@@ -17,16 +17,16 @@ const seleccionarUsuario =({navigation})=>{
 
       <ImageBackground source={fondo} style={styles.image}>
         
-      <LogoTexto>
+      <LogoTexto source={logotexto} style={styles.logotexto}>
       </LogoTexto>
 
-      <botonContratar
+      <BotonContratar
       text="TRABAJAR" 
       onPress={ () =>{
         navigation.navigate('IniciarSesion')
       }}
       />
-     <botonContratar
+     <BotonContratar
       text="CONRTATAR" 
       onPress={ () =>{
         navigation.navigate('Registrarse')
@@ -39,7 +39,7 @@ const seleccionarUsuario =({navigation})=>{
   );
 }
 
-export default seleccionarUsuario
+export default SeleccionarUsuario
 
 const styles = StyleSheet.create({
 
@@ -49,4 +49,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     
   },
+
+  logotexto: {
+    height:'100%',
+    width: '100%',
+    alignItems: 'center',
+  },
+    
 });

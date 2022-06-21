@@ -1,12 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-  const botonContratar = () => {
+  const BotonContratar = () => {
     
   return (
     <View style={styles.screen}>
       <TouchableOpacity
-        onPress={botonContratar}
+        onPress={BotonContratar}
         style={styles.roundButton1}>
         <Text>Poner imagen</Text>
       </TouchableOpacity>
@@ -14,7 +14,7 @@ import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
   );
 }
 
-export default botonContratar;
+export default BotonContratar;
 
 const styles = StyleSheet.create({
   screen: {

@@ -30,7 +30,7 @@ const Inicio =({navigation})=>{
      <Boton_2
       text="REGISTRARSE" 
       onPress={ () =>{
-        navigation.navigate('seleccionarUsuario')
+        navigation.navigate('SeleccionarUsuario')
       }}
       />
    
