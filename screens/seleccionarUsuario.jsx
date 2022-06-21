@@ -2,8 +2,6 @@ import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, InlineImage, TouchableOpacity} from 'react-native';
 import logo from "../assets/logo.png";
 import fondo from "../assets/fondo.jpg";
-import Boton_1 from "../components/Boton_1";
-import Boton_2 from "../components/Boton_2";
 import LogoTexto from "../components/LogoTexto";
 import * as font from 'expo-font';
 import botonContratar from "../components/botonContratar";
@@ -22,7 +20,7 @@ const seleccionarUsuario =({navigation})=>{
       <LogoTexto>
       </LogoTexto>
 
-      <Boton_1 style={{ fontSize: 48}}
+      <botonContratar
       text="TRABAJAR" 
       onPress={ () =>{
         navigation.navigate('IniciarSesion')

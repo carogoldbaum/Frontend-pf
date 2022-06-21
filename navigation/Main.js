@@ -5,17 +5,27 @@ import { NavigationContainer } from '@react-navigation/native';
 import Inicio from '../screens/Inicio'
 import seleccionarUsuario from '../screens/seleccionarUsuario'
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
-const Main =()=>{
-   
-return(
-        <Inicio/>
-
-)
-}
-return(
-        <seleccionarUsuario/>
-)       
+const Main = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+      screenOptions={{
+        headerShown:false
+    }
+    }>
+        <Stack.Screen
+          name="Inicio"
+          component={Inicio}
+        />
+        <Stack.Screen 
+        name="seleccionarUsuario" 
+        component={seleccionarUsuario} 
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
 
 export default Main
