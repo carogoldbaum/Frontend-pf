@@ -1,20 +1,20 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import contratar from "../assets/contratar.png";
 
 
   const BotonContratar = () => {
     
   return (
-    <View style={styles.screen}>
-      <TouchableOpacity
-        style={styles.roundButton2}>
-
-        <View style={{marginTop:'150%',}}></View>
-        <Text style={styles.subtitulo}>CONTRATAR</Text>
+    <View>
+      <View style={styles.screen}>
+      <TouchableOpacity>
+      <Image style={styles.roundButton2} source={contratar}></Image>
+        <Text style={styles.subtituloo}>CONTRATAR</Text>
       </TouchableOpacity>
     </View>
-  );
+    </View>
+  )
 }
 
 export default BotonContratar;
@@ -33,12 +33,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     borderRadius: 180,
-    backgroundColor: '#F9904F',
-    top: '-22%'
+    top: '-482%'
   },
 
-  subtitulo: {
+  subtituloo: {
      fontWeight: 'bold',
+     top: '-475%',
+     textAlign: 'center',
+     fontSize: 15,
+
   },
 
 });

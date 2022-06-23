@@ -22,11 +22,11 @@ export default LogoTexto
 const styles = StyleSheet.create({
 
     logo: {
-        width: '33%',
-        height: '44%',
+        width: '35%',
+        height: '46%',
         position: 'absolute',
         top: '25%',
-        left:'-18%',
+        left:'-19%',
         
     },
       titulo: {

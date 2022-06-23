@@ -1,20 +1,21 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import trabajar from "../assets/trabajar.png";
 
   const BotonTrabajar = () => {
     
-  return (
-    <View style={styles.screen}>
-      <TouchableOpacity
-        style={styles.roundButton1}>
-    
-        <View style={{marginTop:'150%',}}></View>
-        <Text style={styles.subtitulo}>TRABAJAR</Text>
+    return (
+      <View>
+        <View style={styles.screen}>
+        <TouchableOpacity>
+        <Image style={styles.roundButton1} source={trabajar}></Image>
+   
+          <Text style={styles.subtitulo}>TRABAJAR</Text>
         </TouchableOpacity>
-    </View>
-  );
-}
+      </View>
+      </View>
+    )
+  }
 
 export default BotonTrabajar
 
@@ -33,11 +34,14 @@ roundButton1: {
     padding: 10,
     borderRadius: 180,
     backgroundColor: '#F9904F',
-    top: '-22%'
+    top: '-172%'
     },
 
 subtitulo: {
     fontWeight: 'bold',
-    }
+    top: '-165%',
+    textAlign: 'center',
+    fontSize: 15,
+ },
 
 });
