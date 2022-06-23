@@ -7,6 +7,7 @@ import * as font from 'expo-font';
 import BotonContratar from "../components/BotonContratar";
 
 import { useNavigation } from '@react-navigation/native';
+import BotonTrabajar from '../components/BotonTrabajar';
 
 
 const SeleccionarUsuario =({navigation})=>{
@@ -17,10 +18,10 @@ const SeleccionarUsuario =({navigation})=>{
 
       <ImageBackground source={fondo} style={styles.image}>
         
-      <LogoTexto source={logotexto} style={styles.logotexto}>
+      <LogoTexto source={LogoTexto} style={styles.logotexto}>
       </LogoTexto>
 
-      <BotonContratar
+      <BotonTrabajar
       text="TRABAJAR" 
       onPress={ () =>{
         navigation.navigate('IniciarSesion')

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@expo-google-fonts/comfortaa": "^0.2.2",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "expo-font": "^10.1.0",

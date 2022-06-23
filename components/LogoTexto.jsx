@@ -2,7 +2,6 @@ import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, InlineImage, TouchableOpacity} from 'react-native';
 import logo from "../assets/logo.png";
 
-
 const LogoTexto = (props) => {
 
     return (
@@ -26,16 +25,15 @@ const styles = StyleSheet.create({
         width: '33%',
         height: '44%',
         position: 'absolute',
-        top: '75%',
+        top: '25%',
         left:'-18%',
         
     },
       titulo: {
         left:'80%',
-        
-        top: '15%',
+        top: '-58%',
         color: 'black',
-        fontSize: 48
+        fontSize: 48,
         
       },
 });
