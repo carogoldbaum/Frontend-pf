@@ -1,14 +1,12 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, InlineImage, TouchableOpacity} from 'react-native';
-import logo from "../assets/logo.png";
+import { StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
 import fondo from "../assets/fondo.jpg";
 import LogoTexto from "../components/LogoTexto";
-import * as font from 'expo-font';
 import BotonContratar from "../components/BotonContratar";
 
-import { useNavigation } from '@react-navigation/native';
-import BotonTrabajar from '../components/BotonTrabajar';
 
+import BotonTrabajar from '../components/BotonTrabajar';
+import { useNavigation } from '@react-navigation/native';
 
 const SeleccionarUsuario =({navigation})=>{
   
@@ -24,7 +22,7 @@ const SeleccionarUsuario =({navigation})=>{
       <BotonTrabajar
       text="TRABAJAR" 
       onPress={ () =>{
-        navigation.navigate('IniciarSesion')
+        navigation.navigate('Registrarse')
       }}
       />
      <BotonContratar

@@ -24,7 +24,7 @@ const Inicio =({navigation})=>{
       <Boton_1 style={{ fontSize: 48}}
       text="INICIAR SESION" 
       onPress={ () =>{
-        navigation.navigate('IniciarSesion')
+        navigation.navigate('Registrarse')
       }}
       />
      <Boton_2

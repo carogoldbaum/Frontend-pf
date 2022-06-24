@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Inicio from '../screens/Inicio'
 import SeleccionarUsuario from '../screens/SeleccionarUsuario'
+import Registrarse from '../screens/Registrarse';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,10 @@ const Main = () => {
         <Stack.Screen 
         name="SeleccionarUsuario" 
         component={SeleccionarUsuario} 
+        />
+         <Stack.Screen 
+        name="Registrarse" 
+        component={Registrarse} 
         />
       </Stack.Navigator>
     </NavigationContainer>
