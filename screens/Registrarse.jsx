@@ -10,7 +10,7 @@ const Registrarse =({navigation})=>{
     return (
       
       <View>
-            <Text style={styles.dato}>Datos personales</Text>
+            <Text style={styles.titulo}>Datos personales</Text>
             <TextInput style={styles.dato} placeholder="Nombre y apellido" />
             <TextInput style={styles.dato} placeholder="Numero de celular" />
             <TextInput style={styles.dato} placeholder="DD/MM/AA" />
@@ -34,6 +34,12 @@ const Registrarse =({navigation})=>{
   export default Registrarse
   
   const styles = StyleSheet.create({
+   
+    titulo: {
+      padding: 15,
+      marginTop:'10%',
+      width: '47%'
+    },
     dato: {
       fontSize: 20,
         marginTop:'10%',
@@ -45,12 +51,6 @@ const Registrarse =({navigation})=>{
 
       },
     
-      boton: {
-        backgroundColor: 'black',
-        borderRadius: 70,
-        padding: 15,
-        marginTop:'5%',
-        width: '47%'
-      },
+   
         
   });
