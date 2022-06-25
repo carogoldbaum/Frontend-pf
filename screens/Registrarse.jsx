@@ -2,7 +2,6 @@ import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, InlineImage, TouchableOpacity, TextInput,} from 'react-native';
 import SiguienteRegistrarse from "../components/SiguienteRegistrarse";
 import { useNavigation } from '@react-navigation/native';
-import { Picker } from '@react-native-picker/picker';
 
 
 const Registrarse =({navigation})=>{
