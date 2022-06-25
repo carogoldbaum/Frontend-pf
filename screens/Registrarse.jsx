@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, InlineImage, TouchableOpacity, TextInput,} from 'react-native';
-import Boton_3 from "../components/Boton_3";
+import SiguienteRegistrarse from "../components/SiguienteRegistrarse";
 import { useNavigation } from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker';
 
@@ -20,7 +20,7 @@ const Registrarse =({navigation})=>{
             <Text>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
             <TextInput type="submit" />
            
-        <Boton_3 style={styles.boton}
+        <SiguienteRegistrarse style={styles.boton}
             text="SIGUIENTE" 
             onPress={ () =>{
             navigation.navigate('Inicio')

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const Boton_3 = (props) => {
+const SiguienteRegistrarse = (props) => {
 
     const { onPress, text } = props
 
@@ -21,7 +21,7 @@ const Boton_3 = (props) => {
     )
 }
 
-export default Boton_3
+export default SiguienteRegistrarse
 
 
 const styles = StyleSheet.create({
