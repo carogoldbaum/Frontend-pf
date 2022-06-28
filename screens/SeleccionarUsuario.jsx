@@ -1,10 +1,11 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity} from 'react-native';
 import fondo from "../assets/fondo.jpg";
 import LogoTextoSeleccionar from "../components/LogoTextoSeleccionar";
-import BotonContratar from "../components/BotonContratar";
-
-import BotonTrabajar from '../components/BotonTrabajar';
+import BotonContratarSeleccionar from "../components/BotonContratarSeleccionar";
+import EspacioTransTrabajarSeleccionar from "../components/EspacioTransTrabajarSeleccionar";
+import EspacioTransContratarSeleccionar from "../components/EspacioTransContratarSeleccionar ";
+import BotonTrabajarSeleccionar from '../components/BotonTrabajarSeleccionar';
 import { useNavigation } from '@react-navigation/native';
 
 const SeleccionarUsuario =({navigation})=>{
@@ -15,22 +16,26 @@ const SeleccionarUsuario =({navigation})=>{
 
       <ImageBackground source={fondo} style={styles.image}>
         
-      <LogoTextoSeleccionar source={LogoTexto} style={styles.LogoTextoSeleccionar}>
-      </LogoTextoSeleccionar>
+      <LogoTextoSeleccionar/>
 
-      <BotonTrabajar
-      text="TRABAJAR" 
-      onPress={ () =>{
-        navigation.navigate('Registrarse')
-      }}
+      <BotonTrabajarSeleccionar/>
+
+      <EspacioTransTrabajarSeleccionar
+          onPress={ () =>{
+          navigation.navigate('RegistrarseTrabajador')
+          }}
+          
       />
-     <BotonContratar
-      text="CONRTATAR" 
-      onPress={ () =>{
-        navigation.navigate('')
-      }}
-      />
+
+     <BotonContratarSeleccionar/>
    
+     <EspacioTransContratarSeleccionar 
+          onPress={ () =>{
+          navigation.navigate('')
+          }}
+          
+      />
+
       </ImageBackground>
     </View>
     
@@ -46,12 +51,6 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     
-  },
-
-  LogoTextoSeleccionar: {
-    height:'100%',
-    width: '100%',
-    alignItems: 'center',
   },
     
 });

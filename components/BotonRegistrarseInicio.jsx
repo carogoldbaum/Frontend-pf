@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const RegistrarseInicio = (props) => {
+const BotonRegistrarseInicio = (props) => {
 
     const { onPress, text } = props
 
@@ -21,7 +21,7 @@ const RegistrarseInicio = (props) => {
     )
 }
 
-export default RegistrarseInicio
+export default BotonRegistrarseInicio
 
 
 const styles = StyleSheet.create({

@@ -25,13 +25,13 @@ const styles = StyleSheet.create({
         width: '35%',
         height: '46%',
         position: 'absolute',
-        top: '25%',
+        top: '26%',
         left:'-19%',
         
     },
     tituloSeleccionar: {
         left:'80%',
-        top: '-58%',
+        top: '-63%',
         color: 'black',
         fontSize: 48,
         

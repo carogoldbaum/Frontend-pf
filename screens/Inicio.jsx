@@ -1,8 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, InlineImage, TouchableOpacity} from 'react-native';
 import fondo from "../assets/fondo.jpg";
-import LoginInicio from "../components/LoginInicio";
-import RegistrarseInicio from "../components/RegistrarseInicio";
+import BotonIniciarSesionInicio from "../components/BotonIniciarSesionInicio";
+import BotonRegistrarseInicio from "../components/BotonRegistrarseInicio";
 import LogoTextoInicio from "../components/LogoTextoInicio";
 
 import { useNavigation } from '@react-navigation/native';
@@ -16,21 +16,20 @@ const Inicio =({navigation})=>{
 
       <ImageBackground source={fondo} style={styles.image}>
         
-      <LogoTextoInicio>
-      </LogoTextoInicio>
+        <LogoTextoInicio/>
 
-      <LoginInicio style={{ fontSize: 48}}
-      text="INICIAR SESION" 
-      onPress={ () =>{
-        navigation.navigate('')
-      }}
-      />
-     <RegistrarseInicio
-      text="REGISTRARSE" 
-      onPress={ () =>{
-        navigation.navigate('SeleccionarUsuario')
-      }}
-      />
+        <BotonIniciarSesionInicio style={{ fontSize: 48}}
+          text="INICIAR SESION" 
+          onPress={ () =>{
+          navigation.navigate('')
+        }}
+        />
+        <BotonRegistrarseInicio
+          text="REGISTRARSE" 
+          onPress={ () =>{
+          navigation.navigate('SeleccionarUsuario')
+        }}
+        />
    
       </ImageBackground>
     </View>

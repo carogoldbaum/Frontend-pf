@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const LoginInicio = (props) => {
+const BotonIniciarSesionInicio = (props) => {
 
     const { onPress, text } = props
 
@@ -21,7 +21,7 @@ const LoginInicio = (props) => {
     )
 }
 
-export default LoginInicio
+export default BotonIniciarSesionInicio
 
 
 const styles = StyleSheet.create({
@@ -29,9 +29,7 @@ const styles = StyleSheet.create({
     boton1Text: {
         color: 'black',
         textAlign: 'center',
-      
         fontSize: 18,
-        fontFamily: 'Roboto'
     },
     boton1: {
         backgroundColor: 'white',
@@ -39,7 +37,7 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderRadius: 70,
         padding: 12,
-        marginTop:'106%',
+        marginTop:'97%',
         width: '47%'
     },
 
