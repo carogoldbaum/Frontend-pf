@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const RegisterInicio = (props) => {
+const RegistrarseInicio = (props) => {
 
     const { onPress, text } = props
 
@@ -9,10 +9,10 @@ const RegisterInicio = (props) => {
     
         <TouchableOpacity
 
-            style={styles.button2}
+            style={styles.RegistrarseInicio}
             onPress={onPress}
         >
-            <Text style={styles.button2Text}>
+            <Text style={styles.RegistrarseInicioText}>
                 {text}
             </Text>
         
@@ -21,19 +21,19 @@ const RegisterInicio = (props) => {
     )
 }
 
-export default RegisterInicio
+export default RegistrarseInicio
 
 
 const styles = StyleSheet.create({
 
-    button2Text: {
+    RegistrarseInicioText: {
         color: 'white',
         textAlign: 'center',
      
         fontSize: 18,
         width: '100%'
     },
-    button2: {
+    RegistrarseInicio: {
         backgroundColor: 'black',
         borderRadius: 70,
         padding: 15,

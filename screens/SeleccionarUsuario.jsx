@@ -1,9 +1,8 @@
 import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
 import fondo from "../assets/fondo.jpg";
-import LogoTexto from "../components/LogoTexto";
+import LogoTextoSeleccionar from "../components/LogoTextoSeleccionar";
 import BotonContratar from "../components/BotonContratar";
-
 
 import BotonTrabajar from '../components/BotonTrabajar';
 import { useNavigation } from '@react-navigation/native';
@@ -16,8 +15,8 @@ const SeleccionarUsuario =({navigation})=>{
 
       <ImageBackground source={fondo} style={styles.image}>
         
-      <LogoTexto source={LogoTexto} style={styles.logotexto}>
-      </LogoTexto>
+      <LogoTextoSeleccionar source={LogoTexto} style={styles.LogoTextoSeleccionar}>
+      </LogoTextoSeleccionar>
 
       <BotonTrabajar
       text="TRABAJAR" 
@@ -28,7 +27,7 @@ const SeleccionarUsuario =({navigation})=>{
      <BotonContratar
       text="CONRTATAR" 
       onPress={ () =>{
-        navigation.navigate('Registrarse')
+        navigation.navigate('')
       }}
       />
    
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
     
   },
 
-  logotexto: {
+  LogoTextoSeleccionar: {
     height:'100%',
     width: '100%',
     alignItems: 'center',

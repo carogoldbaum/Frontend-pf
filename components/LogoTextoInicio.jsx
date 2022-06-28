@@ -2,26 +2,26 @@ import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, InlineImage, TouchableOpacity} from 'react-native';
 import logo from "../assets/logo.png";
 
-const LogoTexto2 = (props) => {
+const LogoTextoInicio = (props) => {
 
     return (
         <View>
-            <Image style={styles.logoo} source={logo}></Image>
+            <Image style={styles.logoInicio} source={logo}></Image>
                  <View style={{ flexDirection: 'row', justifyContent: 'space-between',  marginTop:'60%',}}>
          
-                    <Text style={styles.tituloo}>ConApp</Text>
+                    <Text style={styles.tituloInicio}>ConApp</Text>
           
                  </View>
         </View>
     )
 }
 
-export default LogoTexto2
+export default LogoTextoInicio
 
 
 const styles = StyleSheet.create({
 
-    logoo: {
+    logoInicio: {
         width: '35%',
         height: '46%',
         position: 'absolute',
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         left:'-19%',
         
     },
-      tituloo: {
+      tituloInicio: {
         left:'80%',
         top: '-58%',
         color: 'black',

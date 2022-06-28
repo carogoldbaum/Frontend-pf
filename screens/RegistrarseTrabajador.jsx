@@ -4,7 +4,7 @@ import SiguienteRegistrarse from "../components/SiguienteRegistrarse";
 import { useNavigation } from '@react-navigation/native';
 
 
-const Registrarse =({navigation})=>{
+const RegistrarseTrabajador =({navigation})=>{
   
     return (
       
@@ -30,7 +30,7 @@ const Registrarse =({navigation})=>{
   );  
   }
   
-  export default Registrarse
+  export default RegistrarseTrabajador
   
   const styles = StyleSheet.create({
    
