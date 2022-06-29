@@ -37,8 +37,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         borderRadius: 70,
         padding: 15,
-        marginLeft:'24%',
-        width: '47%'
+        marginLeft:'10%',
+        width: '80%',
+        top: '20%',
     },
 
 });
