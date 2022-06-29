@@ -10,12 +10,23 @@ const SiguienteRegistrarse = (props) => {
         <TouchableOpacity
 
             style={styles.button3}
-            onPress={onPress}
+            onPress={() => {
+                if (this.state.text.trim() === "") {
+                  this.setState(() => ({ nameError: "First name required." }));
+                } else {
+                  this.setState(() => ({ nameError: null }));
+                }
+              }}
+              title="Login"
+    
         >
             <Text style={styles.button3Text}>
                 {text}
             </Text>
         
+            
+         
+
         </TouchableOpacity>
        
     )
@@ -37,9 +48,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         borderRadius: 70,
         padding: 15,
-        marginLeft:'10%',
+        marginLeft:'0%',
         width: '80%',
-        top: '20%',
+        top: '11%',
     },
 
 });

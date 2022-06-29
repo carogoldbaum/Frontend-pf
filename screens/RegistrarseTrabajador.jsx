@@ -1,8 +1,9 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String} from 'react-native';
+import { StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground} from 'react-native';
 import SiguienteRegistrarse from "../components/SiguienteRegistrarse";
 import { useNavigation } from '@react-navigation/native';
 import SelectList from 'react-native-dropdown-select-list'
+import fondo from "../assets/fondo.jpg";
 
 const RegistrarseTrabajador =({navigation})=>{
 
@@ -16,6 +17,9 @@ const RegistrarseTrabajador =({navigation})=>{
     return (
       
       <View>
+
+            <ImageBackground source={fondo} style={styles.image}>
+
             <Text style={styles.titulo}>Datos personales</Text>
 
             <TextInput   
@@ -46,7 +50,7 @@ const RegistrarseTrabajador =({navigation})=>{
             </View>
 
 
-            <Text style={{ marginLeft:'11%', marginRight:'10%', fontSize: 13,  top: '17%'}}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
+            <Text style={{ marginLeft:'11%', marginRight:'10%', fontSize: 13,  top: '9%'}}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
             
            
         <SiguienteRegistrarse
@@ -55,7 +59,7 @@ const RegistrarseTrabajador =({navigation})=>{
             navigation.navigate('Inicio')
         }}
         />
-
+        </ImageBackground>
     </View>
   );  
   }
@@ -65,23 +69,30 @@ const RegistrarseTrabajador =({navigation})=>{
   const styles = StyleSheet.create({
    
     titulo: {
-      top: '15%',
-      marginLeft:'10%',
-      fontSize: 30,
+      top: '8%',
+      marginLeft:'-13%',
+      fontSize: 34,
+
       },
 
     dato: {
       fontSize: 18,
         marginTop:'5%',
-        marginLeft:'10%',
+        marginLeft:'0%',
         width: '80%',
         alignItems: 'center',
         borderWidth: 2,
         padding:'3%',
-        top: '15%'
+        top: '8%',
 
       },
     
+      image: {
+        height:'100%',
+        width: '100%',
+        alignItems: 'center',
+        
+      },
    
         
   });

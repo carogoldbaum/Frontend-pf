@@ -2,7 +2,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground, InlineImage, TouchableOpacity} from 'react-native';
 import logo from "../assets/logo.png";
 
-const LogoTextoSeleccionar = (props) => {
+const LogoTextoSeleccionar = () => {
 
     return (
         <View>
