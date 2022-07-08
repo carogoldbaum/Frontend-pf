@@ -4,15 +4,43 @@ import SiguienteRegistrarse from "../components/SiguienteRegistrarse";
 import { useNavigation } from '@react-navigation/native';
 import SelectList from 'react-native-dropdown-select-list'
 import fondo from "../assets/fondo.jpg";
+import rubro from "../Rubro.json";
+import axios from 'axios';
+import RNPickerSelect from "react-native-picker-select";
 
 const RegistrarseTrabajador =({navigation})=>{
 
   const [selected, setSelected] = React.useState("");
+/*  
   const data = [
     {key:'1',value:'Jammu & Kashmir'},
     {key:'2',value:'Himachal Pradesh'},
     {key:'3',value:'West Bengal'},
-  ];
+  ];*/
+  const [loaded, setLoaded] = React.useState(false);
+const [rubros,setRubros] = useState([]);
+
+
+  useEffect(() => {
+    axios
+    /*.get("http://localhost:5000/rubro")
+    .then(response=>{console.log(response);setRubros(response.data) })
+    .catch(error=>{console.log(error)});
+*/
+let RubrosJSON = rubro;
+setRubros(RubrosJSON);
+setLoaded(true);
+}, []);
+
+/*state={rubros:[]}
+
+  useEffect() = () => {
+    axios
+    .get("")
+    .then(response=>{console.log(response)})
+    .catch(error=>{console.log(error)});
+}
+*/
 
     return (
       
@@ -45,7 +73,16 @@ const RegistrarseTrabajador =({navigation})=>{
             />
             <View style={styles.dato}>
   
-              <SelectList setSelected={setSelected} data={data}/>
+              {
+                loaded && 
+                <RNPickerSelect
+                 onValueChange={(value) => console.log(value)}
+                 items={[{ label: rubros, value: "Nombre" },]
+                  
+                 }
+                 key="id"
+             />
+              }
 
             </View>
 
