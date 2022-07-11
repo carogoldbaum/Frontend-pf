@@ -7,6 +7,7 @@ import fondo from "../assets/fondo.jpg";
 import rubro from "../Rubro.json";
 import axios from 'axios';
 import RNPickerSelect from "react-native-picker-select";
+import Picker from "../components/Picker";
 
 const RegistrarseTrabajador =({navigation})=>{
 
@@ -19,18 +20,6 @@ const RegistrarseTrabajador =({navigation})=>{
   ];*/
   const [loaded, setLoaded] = React.useState(false);
 const [rubros,setRubros] = useState([]);
-
-
-  useEffect(() => {
-    axios
-    /*.get("http://localhost:5000/rubro")
-    .then(response=>{console.log(response);setRubros(response.data) })
-    .catch(error=>{console.log(error)});
-*/
-let RubrosJSON = rubro;
-setRubros(RubrosJSON);
-setLoaded(true);
-}, []);
 
 /*state={rubros:[]}
 
@@ -72,17 +61,11 @@ setLoaded(true);
               
             />
             <View style={styles.dato}>
-  
-              {
-                loaded && 
-                <RNPickerSelect
-                 onValueChange={(value) => console.log(value)}
-                 items={[{ label: rubros, value: "Nombre" },]
-                  
-                 }
-                 key="id"
-             />
-              }
+
+            
+              <Picker/>
+
+
 
             </View>
 
