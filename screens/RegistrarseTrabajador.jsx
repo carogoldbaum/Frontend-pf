@@ -33,41 +33,47 @@ const [rubros,setRubros] = useState([]);
 
     return (
       
-      <View>
+      <View style={styles.dato}>
 
-            <ImageBackground source={fondo} style={styles.image}>
+           
 
             <Text style={styles.titulo}>Datos personales</Text>
 
-            <TextInput   
-              style={styles.dato}
+            <TextInput  
+            style={styles.input} 
               onChangeText={onChangeText}
               value={String}
               placeholder="Nombre y Apellido"
               
             />
             <TextInput
-              style={styles.dato}
+            style={styles.input} 
               onChangeText={onChangeNumber}
               value={number}
               placeholder="Número de Celular"
               keyboardType="numeric"
             />
             <TextInput   
-              style={styles.dato}
+            style={styles.input} 
               onChangeText={onChangeDate}
               value={Date}
               placeholder="DD/MM/AA"
               
             />
-            <View style={styles.dato}>
+            
 
             
-              <Picker/>
+              <Picker style={styles.input}  />
 
+              <TextInput   
+             style={styles.input} 
+              onChangeText={onChangeText}
+              value={String}
+              placeholder="Nombre y Apellido"
+              
+            />
 
-
-            </View>
+            
 
 
             <Text style={{ marginLeft:'11%', marginRight:'10%', fontSize: 13,  top: '9%'}}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
@@ -79,7 +85,6 @@ const [rubros,setRubros] = useState([]);
             navigation.navigate('Inicio')
         }}
         />
-        </ImageBackground>
     </View>
   );  
   }
@@ -100,12 +105,25 @@ const [rubros,setRubros] = useState([]);
         marginTop:'5%',
         marginLeft:'0%',
         width: '80%',
-        alignItems: 'center',
+        marginRight: 'auto',
+        marginLeft: 'auto',
         borderWidth: 2,
         padding:'3%',
         top: '8%',
+        display:"flex",
 
       },
+
+      input: {
+        fontSize: 18,
+          marginTop:'5%',
+          marginLeft:'0%',
+          width: '80%',
+          borderWidth: 2,
+          padding:'3%',
+          top: '8%',
+        },
+      
     
       image: {
         height:'100%',
