@@ -7,7 +7,8 @@ import fondo from "../assets/fondo.jpg";
 import axios from 'axios';
 import RNPickerSelect from "react-native-picker-select";
 import Picker from "../components/Picker";
-import ConexionForm from "../services/formRegistrarseTrabajador";
+import register from "../services/formRegistrarseTrabajador";
+
 
 const RegistrarseTrabajador =({navigation})=>{
 
@@ -81,18 +82,14 @@ const form = async (i) => {
               
             />
 
-            
-
-
             <Text style={{ marginLeft:'11%', marginRight:'10%', fontSize: 13,  top: '9%'}}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
             
            
         <SiguienteRegistrarse 
             type="sumbit"
             text="SIGUIENTE" 
-            onPress={ () =>{
-            navigation.navigate('Inicio')
-        }}
+            onPress={form}
+           
         />
     </View>
   );  

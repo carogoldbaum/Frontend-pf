@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var BASE_URL = 'http://localhost:5000';","map":{"version":3,"names":["BASE_URL"],"sources":["C:/Users/46500578/Desktop/clon/Frontend-pf/config.js"],"sourcesContent":["export const BASE_URL = 'http://localhost:5000';"],"mappings":"AAAA,OAAO,IAAMA,QAAQ,GAAG,uBAAjB"},"metadata":{},"sourceType":"module"}
