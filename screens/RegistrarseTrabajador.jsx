@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground} from 'react-native';
+import { TouchableOpacity,StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground} from 'react-native';
 import SiguienteRegistrarse from "../components/SiguienteRegistrarse";
 import { useNavigation } from '@react-navigation/native';
 import SelectList from 'react-native-dropdown-select-list'
@@ -35,7 +35,11 @@ const form = async (i) => {
   if(!rubros.NombreyApellido){
     console.log("joyaa")
       Alert.alert("Por favor complete el campo")
-  }else{}
+  }else{
+
+    register(rubros)
+
+  }
 } 
 
   
@@ -85,12 +89,14 @@ const form = async (i) => {
             <Text style={{ marginLeft:'11%', marginRight:'10%', fontSize: 13,  top: '9%'}}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
             
            
-        <SiguienteRegistrarse 
-            type="sumbit"
-            text="SIGUIENTE" 
-            onPress={form}
+        <TouchableOpacity
+        onPress={() =>form()}
+        >
+        <Text style={styles.button3Text}>
+                Siguiente
+            </Text>
+        </TouchableOpacity>
            
-        />
     </View>
   );  
   }
