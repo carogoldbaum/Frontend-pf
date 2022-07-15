@@ -51,6 +51,8 @@ const styles = StyleSheet.create({
         marginLeft:'0%',
         width: '80%',
         top: '11%',
+        marginRight: 'auto',
+        marginLeft: 'auto',
     },
 
 });

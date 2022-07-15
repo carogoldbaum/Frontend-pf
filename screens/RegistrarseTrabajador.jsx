@@ -4,22 +4,21 @@ import SiguienteRegistrarse from "../components/SiguienteRegistrarse";
 import { useNavigation } from '@react-navigation/native';
 import SelectList from 'react-native-dropdown-select-list'
 import fondo from "../assets/fondo.jpg";
-import rubro from "../Rubro.json";
 import axios from 'axios';
 import RNPickerSelect from "react-native-picker-select";
 import Picker from "../components/Picker";
+import ConexionForm from "../services/formRegistrarseTrabajador";
 
 const RegistrarseTrabajador =({navigation})=>{
 
   const [selected, setSelected] = React.useState("");
-/*  
-  const data = [
-    {key:'1',value:'Jammu & Kashmir'},
-    {key:'2',value:'Himachal Pradesh'},
-    {key:'3',value:'West Bengal'},
-  ];*/
+
   const [loaded, setLoaded] = React.useState(false);
-const [rubros,setRubros] = useState([]);
+const [rubros,setRubros] = useState({
+  NombreyApellido: '',
+  NumCel: '',
+  Fecha: '',
+});
 
 /*state={rubros:[]}
 
@@ -31,6 +30,14 @@ const [rubros,setRubros] = useState([]);
 }
 */
 
+const form = async (i) => {
+  if(!rubros.NombreyApellido){
+    console.log("joyaa")
+      Alert.alert("Por favor complete el campo")
+  }else{}
+} 
+
+  
     return (
       
       <View style={styles.dato}>
@@ -41,22 +48,23 @@ const [rubros,setRubros] = useState([]);
 
             <TextInput  
             style={styles.input} 
-              onChangeText={onChangeText}
-              value={String}
+              onChangeText={text => setRubros({...rubros, NombreyApellido: text}) }
+              value={rubros.NombreyApellido}
               placeholder="Nombre y Apellido"
+              
               
             />
             <TextInput
             style={styles.input} 
-              onChangeText={onChangeNumber}
-              value={number}
+              onChangeText={text => setRubros({...rubros, NumCel: number}) }
+              value={rubros.NumCel}
               placeholder="Número de Celular"
               keyboardType="numeric"
             />
             <TextInput   
             style={styles.input} 
-              onChangeText={onChangeDate}
-              value={Date}
+              onChangeText={text => setRubros({...rubros, Fecha: Date}) }
+              value={rubros.Fecha}
               placeholder="DD/MM/AA"
               
             />
@@ -79,7 +87,8 @@ const [rubros,setRubros] = useState([]);
             <Text style={{ marginLeft:'11%', marginRight:'10%', fontSize: 13,  top: '9%'}}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
             
            
-        <SiguienteRegistrarse
+        <SiguienteRegistrarse 
+            type="sumbit"
             text="SIGUIENTE" 
             onPress={ () =>{
             navigation.navigate('Inicio')
@@ -97,7 +106,8 @@ const [rubros,setRubros] = useState([]);
       top: '8%',
       marginLeft:'-13%',
       fontSize: 34,
-
+      marginRight: 'auto',
+      marginLeft: 'auto',
       },
 
     dato: {
