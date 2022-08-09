@@ -1,25 +1,25 @@
 import React, { Component, useEffect, useState } from 'react';
-import { TouchableOpacity,StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground} from 'react-native';
 import SiguienteRegistrarse from "../components/SiguienteRegistrarse";
 import { useNavigation } from '@react-navigation/native';
 import SelectList from 'react-native-dropdown-select-list'
 import fondo from "../assets/fondo.jpg";
+import rubro from "../Rubro.json";
 import axios from 'axios';
 import RNPickerSelect from "react-native-picker-select";
 import Picker from "../components/Picker";
-import register from "../services/formRegistrarseTrabajador";
-
 
 const RegistrarseTrabajador =({navigation})=>{
 
   const [selected, setSelected] = React.useState("");
-
+/*  
+  const data = [
+    {key:'1',value:'Jammu & Kashmir'},
+    {key:'2',value:'Himachal Pradesh'},
+    {key:'3',value:'West Bengal'},
+  ];*/
   const [loaded, setLoaded] = React.useState(false);
-const [rubros,setRubros] = useState({
-  NombreyApellido: '',
-  NumCel: '',
-  Fecha: '',
-});
+const [rubros,setRubros] = useState([]);
 
 /*state={rubros:[]}
 
@@ -31,72 +31,55 @@ const [rubros,setRubros] = useState({
 }
 */
 
-const form = async (i) => {
-  if(!rubros.NombreyApellido){
-    console.log("joyaa")
-      Alert.alert("Por favor complete el campo")
-  }else{
-
-    register(rubros)
-
-  }
-} 
-
-  
     return (
       
-      <View style={styles.dato}>
+      <View>
 
-           
+            <ImageBackground source={fondo} style={styles.image}>
 
             <Text style={styles.titulo}>Datos personales</Text>
 
-            <TextInput  
-            style={styles.input} 
-              onChangeText={text => setRubros({...rubros, NombreyApellido: text}) }
-              value={rubros.NombreyApellido}
-              placeholder="Nombre y Apellido"
-              
-              
-            />
-            <TextInput
-            style={styles.input} 
-              onChangeText={text => setRubros({...rubros, NumCel: number}) }
-              value={rubros.NumCel}
-              placeholder="Número de Celular"
-              keyboardType="numeric"
-            />
             <TextInput   
-            style={styles.input} 
-              onChangeText={text => setRubros({...rubros, Fecha: Date}) }
-              value={rubros.Fecha}
-              placeholder="DD/MM/AA"
-              
-            />
-            
-
-            
-              <Picker style={styles.input}  />
-
-              <TextInput   
-             style={styles.input} 
+              style={styles.dato}
               onChangeText={onChangeText}
               value={String}
               placeholder="Nombre y Apellido"
               
             />
+            <TextInput
+              style={styles.dato}
+              onChangeText={onChangeNumber}
+              value={number}
+              placeholder="Número de Celular"
+              keyboardType="numeric"
+            />
+            <TextInput   
+              style={styles.dato}
+              onChangeText={onChangeDate}
+              value={Date}
+              placeholder="DD/MM/AA"
+              
+            />
+            <View style={styles.dato}>
+
+            
+              <Picker/>
+
+
+
+            </View>
+
 
             <Text style={{ marginLeft:'11%', marginRight:'10%', fontSize: 13,  top: '9%'}}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
             
            
-        <TouchableOpacity
-        onPress={() =>form()}
-        >
-        <Text style={styles.button3Text}>
-                Siguiente
-            </Text>
-        </TouchableOpacity>
-           
+        <SiguienteRegistrarse
+            text="SIGUIENTE" 
+            onPress={ () =>{
+            navigation.navigate('Inicio')
+        }}
+        />
+        </ImageBackground>
     </View>
   );  
   }
@@ -109,8 +92,7 @@ const form = async (i) => {
       top: '8%',
       marginLeft:'-13%',
       fontSize: 34,
-      marginRight: 'auto',
-      marginLeft: 'auto',
+
       },
 
     dato: {
@@ -118,25 +100,12 @@ const form = async (i) => {
         marginTop:'5%',
         marginLeft:'0%',
         width: '80%',
-        marginRight: 'auto',
-        marginLeft: 'auto',
+        alignItems: 'center',
         borderWidth: 2,
         padding:'3%',
         top: '8%',
-        display:"flex",
 
       },
-
-      input: {
-        fontSize: 18,
-          marginTop:'5%',
-          marginLeft:'0%',
-          width: '80%',
-          borderWidth: 2,
-          padding:'3%',
-          top: '8%',
-        },
-      
     
       image: {
         height:'100%',

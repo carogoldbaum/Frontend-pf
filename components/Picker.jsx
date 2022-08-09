@@ -1,7 +1,7 @@
 import RNPickerSelect from "react-native-picker-select";
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-
+import r from '../Rubro.json'
 
 const Picker = () =>{
     const [rubro, setRubros] = useState([]);
@@ -9,7 +9,7 @@ const Picker = () =>{
     
     console.log("obtener elementos")
     useEffect(() => {
-        axios.get(`http://localhost:5000/rubro`)
+        /*axios.get(`http://localhost:5000/rubro`)
         .then(function (response) {
             console.log("Se han traido los datos")
             ghostList=(response.data)
@@ -22,9 +22,11 @@ const Picker = () =>{
             console.log("Finally:")
             console.log(ghostList)
             setRubros(ghostList);
-        })
+        })*/
+        console.log(r)
+        setRubros(r);
+        console.log("a")
     }, []);
-    console.log("a")
     return(
         <RNPickerSelect
             onValueChange={(value) => console.log(value)}
