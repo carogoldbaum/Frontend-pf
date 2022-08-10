@@ -3,12 +3,12 @@ import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const BotonSiguienteRegistrarse = (props) => {
 
-    const { onPress, text } = props
+    const { onPress, text, disable } = props
 
     return (
     
         <TouchableOpacity
-
+        disabled={disable}
             style={styles.button3}
             onPress={onPress}
     
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
         padding: 15,
         marginLeft:'0%',
         width: '80%',
-        top: '11%',
+        top: '10%',
     },
 
 });

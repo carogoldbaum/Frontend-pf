@@ -5,6 +5,14 @@ import fondo from "../assets/fondo.jpg";
 import OlvideContraseña from "../components/OlvideContraseña"
 
 const IniciarSesion =({navigation})=>{
+
+  const [userState, setUserState] = useState({
+    email: '',
+    password: '',
+  });
+  const [error, setError] = React.useState(false);
+  const [disable, setDisable] = React.useState(false);
+
     return (
       
       <View>
@@ -15,15 +23,15 @@ const IniciarSesion =({navigation})=>{
 
             <TextInput   
               style={styles.dato}
-              onChangeText={onChangeText}
-              value={String}
+              onChangeText={text => setUserState({ ...userState, email: text })}
+              value={userState.email}
               placeholder="Correo electronico"
               
             />
             <TextInput
               style={styles.dato}
-              onChangeText={onChangeText}
-              value={String}
+              onChangeText={text => setUserState({ ...userState, password: text })}
+              value={userState.password}
               placeholder="Contraseña"
             />
                
@@ -32,13 +40,32 @@ const IniciarSesion =({navigation})=>{
                 navigation.navigate('RestablecerContraseña')
                 }}
                  />
-            
+
+                 
+            {error && <Text style={styles.alerta}>Completar datos</Text>}
 
         <BotonIniciarSesion
             text="INGRESAR" 
-            onPress={ () =>{
-            navigation.navigate('SeleccionarComoIngresar')
-        }}
+            onPress={async () =>{
+              setDisable(true)
+              if (userState.email==''||userState.password==''){
+                setError(true)
+              }
+                else {
+                  //await PostLogIn(userState).then(() => {
+                      setDisable(false)
+                      navigation.navigate('SeleccionarComoIngresar')
+                    
+                  //})
+                  //.catch(() => {
+                    //console.log("Datos mal")
+                    //setError(true)
+                   // setDisable(false)
+               // });
+              
+          }setDisable(false)
+        }
+      }  
         />
         </ImageBackground>
     </View>
@@ -74,6 +101,14 @@ const IniciarSesion =({navigation})=>{
         alignItems: 'center',
         
       },
+
+      alerta: {
+        color: 'black',
+        textAlign: 'center',
+        top: '2%',
+        fontSize: 20,
+        width: '100%'
+        },
    
         
   });
