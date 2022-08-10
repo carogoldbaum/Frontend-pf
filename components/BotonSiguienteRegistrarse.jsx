@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
-const SiguienteRegistrarse = (props) => {
+const BotonSiguienteRegistrarse = (props) => {
 
     const { onPress, text } = props
 
@@ -10,29 +10,19 @@ const SiguienteRegistrarse = (props) => {
         <TouchableOpacity
 
             style={styles.button3}
-            onPress={() => {
-                if (this.state.text.trim() === "") {
-                  this.setState(() => ({ nameError: "First name required." }));
-                } else {
-                  this.setState(() => ({ nameError: null }));
-                }
-              }}
-              title="Login"
+            onPress={onPress}
     
         >
             <Text style={styles.button3Text}>
                 {text}
             </Text>
-        
-            
-         
 
         </TouchableOpacity>
-       
+
     )
 }
 
-export default SiguienteRegistrarse
+export default BotonSiguienteRegistrarse
 
 
 const styles = StyleSheet.create({

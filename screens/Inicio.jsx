@@ -21,13 +21,13 @@ const Inicio =({navigation})=>{
         <BotonIniciarSesionInicio style={{ fontSize: 48}}
           text="INICIAR SESION" 
           onPress={ () =>{
-          navigation.navigate('')
+          navigation.navigate('IniciarSesion')
         }}
         />
         <BotonRegistrarseInicio
           text="REGISTRARSE" 
           onPress={ () =>{
-          navigation.navigate('SeleccionarUsuario')
+          navigation.navigate('Registrarse')
         }}
         />
    

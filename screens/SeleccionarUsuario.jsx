@@ -31,7 +31,7 @@ const SeleccionarUsuario =({navigation})=>{
    
      <EspacioTransContratarSeleccionar 
           onPress={ () =>{
-          navigation.navigate('')
+          navigation.navigate('RegistrarseContratador')
           }}
           
       />
