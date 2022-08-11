@@ -5,7 +5,9 @@ import fondo from "../assets/fondo.jpg";
 import SelectDropdown from 'react-native-select-dropdown';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-function RegistrarseTrabajador() {
+const RegistrarseTrabajador = ({navigation}) => {
+  
+
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -91,7 +93,7 @@ function RegistrarseTrabajador() {
                 else {
                   //await PostLogIn(userState).then(() => {
                       setDisable(false)
-                      navigation.navigate('Inicio')
+                      navigation.navigate('HomeTrabajador')
                     
                   //})
                   //.catch(() => {

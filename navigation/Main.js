@@ -10,6 +10,7 @@ import RestablecerContraseña from "../screens/RestablecerContraseña";
 import SeleccionarComoIngresar from "../screens/SeleccionarComoIngresar";
 import RegistrarseContratador from "../screens/RegistrarseContratador";
 import HomeContratador from "../screens/HomeContratador";
+import HomeTrabajador from "../screens/HomeTrabajador"
 
 const Stack = createNativeStackNavigator();
 
@@ -56,6 +57,10 @@ const Main = () => {
           <Stack.Screen 
         name="HomeContratador" 
         component={HomeContratador}
+        />
+        <Stack.Screen 
+        name="HomeTrabajador" 
+        component={HomeTrabajador} 
         />
       </Stack.Navigator>
     </NavigationContainer>
