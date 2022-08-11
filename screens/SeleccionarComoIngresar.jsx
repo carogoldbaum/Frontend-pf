@@ -31,7 +31,7 @@ const SeleccionarComoIngresar =({navigation})=>{
    
      <EspacioTransContratarSeleccionar 
           onPress={ () =>{
-          navigation.navigate('HomeTrabajador')
+          navigation.navigate('HomeContratador')
           }}
           
       />

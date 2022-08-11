@@ -94,6 +94,7 @@ const Registrarse =({navigation})=>{
         borderWidth: 2,
         padding:'3%',
         top: '8%',
+        backgroundColor: '#F4F4F4',
 
       },
     

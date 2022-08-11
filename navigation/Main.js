@@ -5,10 +5,11 @@ import Inicio from '../screens/Inicio'
 import SeleccionarUsuario from '../screens/SeleccionarUsuario'
 import RegistrarseTrabajador from '../screens/RegistrarseTrabajador';
 import Registrarse from '../screens/Registrarse';
-import IniciarSesion from "../screens/IniciarSesion"
-import RestablecerContraseña from "../screens/RestablecerContraseña"
-import SeleccionarComoIngresar from "../screens/SeleccionarComoIngresar"
-import RegistrarseContratador from "../screens/RegistrarseContratador"
+import IniciarSesion from "../screens/IniciarSesion";
+import RestablecerContraseña from "../screens/RestablecerContraseña";
+import SeleccionarComoIngresar from "../screens/SeleccionarComoIngresar";
+import RegistrarseContratador from "../screens/RegistrarseContratador";
+import HomeContratador from "../screens/HomeContratador";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,10 @@ const Main = () => {
          <Stack.Screen 
         name="RegistrarseContratador" 
         component={RegistrarseContratador} 
+        />
+          <Stack.Screen 
+        name="HomeContratador" 
+        component={HomeContratador}
         />
       </Stack.Navigator>
     </NavigationContainer>
