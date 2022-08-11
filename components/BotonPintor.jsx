@@ -26,14 +26,14 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 180,
     backgroundColor: '#F9904F',
-    top: '60%',
-    right: '25%',
+    top: '59.5%',
+    right: '-10%',
     },
 
     Texto: {
     fontWeight: 'bold',
-    top: '65%',
-    right: '15%',
+    top: '61.5%',
+    right: '-20%',
     fontSize: 15,
     },
 

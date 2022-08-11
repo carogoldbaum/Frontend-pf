@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import BotonHome from '../components/IconoHome';
 
 const NavBar = (props) => {
 
@@ -9,6 +10,11 @@ const NavBar = (props) => {
     
          <View >
               <Image style={styles.EspacioEnBlancoTrabajar}></Image>
+              <BotonHome
+                onPress={ () =>{
+                navigation.navigate('HomeContratador')
+        }}
+        />  
            
          </View>
        
@@ -28,7 +34,7 @@ const styles = StyleSheet.create({
         marginTop:'-109.5%',
         borderWidth:3,
         borderColor: 'black',
-        
+
     },
 
 });

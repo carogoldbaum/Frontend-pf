@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity, backgroundColor} from 'react-native';
 import fondo from "../assets/fondo.jpg";
 import { useNavigation } from '@react-navigation/native';
 import BotonPlomero from '../components/BotonPlomero';
@@ -11,6 +11,7 @@ import BotonAlbañil from '../components/BotonAlbañil';
 import BotonLimpieza from '../components/BotonLimpieza';
 import BotonProfesor from '../components/BotonProfesor';
 import NavBar from '../components/NavBar';
+import IconoHome from '../components/IconoHome';
 
 const HomeContratador =({navigation})=>{
 
@@ -55,7 +56,7 @@ const HomeContratador =({navigation})=>{
             navigation.navigate('HomeContratador')
         }}
         />
-        <BotonLimpieza style={{ fontSize: 48}}
+            <BotonLimpieza style={{ fontSize: 48}}
             text="Limpieza" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
@@ -67,8 +68,14 @@ const HomeContratador =({navigation})=>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <NavBar/>
 
+            <NavBar/>
+            
+            <IconoHome
+            onPress={ () =>{
+            navigation.navigate('HomeContratador')
+        }}
+        />
          
         </View>
     );
@@ -83,6 +90,7 @@ const styles = StyleSheet.create({
       height:'100%',
       width: '100%',
       alignItems: 'center',
+      backgroundColor: '#F4F4F4',
       
     },
 
