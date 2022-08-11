@@ -16,7 +16,7 @@ const HomeContratador =({navigation})=>{
 
     return (
         <View>
-            <ImageBackground source={fondo} style={styles.image}>
+           
             <Text style={styles.titulo}>Rubros</Text>
 
             <BotonPlomero style={{ fontSize: 48}}
@@ -67,10 +67,9 @@ const HomeContratador =({navigation})=>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <NavBar style={{ fontSize: 48}}
-            text="NavBar"
-        />
-            </ImageBackground>
+            <NavBar/>
+
+         
         </View>
     );
         
@@ -88,8 +87,9 @@ const styles = StyleSheet.create({
     },
 
     titulo: {
-        top: '6%',
+        top: '4.5%',
         fontSize: 34,
+        left: '35%',
         alignItems: 'center'
   
         },

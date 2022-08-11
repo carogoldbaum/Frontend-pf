@@ -27,13 +27,13 @@ const styles = StyleSheet.create({
     borderRadius: 180,
     backgroundColor: '#F9904F',
     top: '-320%',
-    left: '25%',
+    left: '58%',
     },
 
     Texto: {
     fontWeight: 'bold',
-    top: '-315%',
-    left: '33%',
+    top: '-318%',
+    left: '65.5%',
     fontSize: 15,
     },
 

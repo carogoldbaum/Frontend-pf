@@ -1,24 +1,34 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
- const Rectangle = () => {
+const NavBar = (props) => {
+
+    const { onPress, text } = props
+
     return (
-    <View>
-        style={styles.Rectangle}
-    </View>
+    
+         <View >
+              <Image style={styles.EspacioEnBlancoTrabajar}></Image>
+           
+         </View>
+       
+    )
+}
 
-    )};
-
-export default Rectangle
+export default NavBar
 
 
 const styles = StyleSheet.create({
 
-    Rectangle: {
-        backgroundColor: '#F4F4F4',
-        width: 200,
-        height: 220,
-          top: '50%'
+    EspacioEnBlancoTrabajar: {
+        left: '-2%',
+        backgroundColor: "rgba(52, 52, 52, 0.0)",
+        width: 430,
+        height: 80,
+        marginTop:'-109.5%',
+        borderWidth:3,
+        borderColor: 'black',
+        
     },
 
 });
