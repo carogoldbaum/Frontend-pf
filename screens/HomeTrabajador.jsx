@@ -7,7 +7,7 @@ import BotonSolicitudesDeTrabajoHomeTrabajador from '../components/BotonSolicitu
 import { useNavigation } from '@react-navigation/native';
 import TituloHomeTrabajador from "../components/TituloHomeTrabajador";
 
-import NavBar from '../components/NavBar';
+import NavBarTrabajador from '../components/NavBarTrabajador';
 
 const HomeTrabajador =({navigation})=>{
 
@@ -16,7 +16,8 @@ const HomeTrabajador =({navigation})=>{
         <View style={styles.diseño}>
 
             <TituloHomeTrabajador/>
-            <View style={{borderBottomColor: 'black', borderBottomWidth: 1, width:'100%', marginBottom:'10%', marginTop:'-10%',}}></View>
+            <View style={{borderBottomColor: 'black', borderWidth: 0.7, width:'100%', marginBottom:'10%', marginTop:'-10%',}}></View>
+            <View style={{borderBottomColor: 'black', borderWidth: 0.7, width:'100%', marginBottom:'10%', marginTop:'-10%', top: '58%',}}></View>
 
             <BotonSolicitudesDeTrabajoHomeTrabajador/>
 
@@ -35,8 +36,8 @@ const HomeTrabajador =({navigation})=>{
                 }}
                 
             />
-            <View style={{borderBottomColor: 'black', borderBottomWidth: 1, width:'100%', marginBottom:'90%', marginTop:'-40%',}}></View>
-            <NavBar></NavBar>
+
+            <NavBarTrabajador/>
         </View>
     );
 }
@@ -48,11 +49,12 @@ const styles = StyleSheet.create({
 
   diseño: {
     alignItems: 'center',
+
     
   },
   tituloHome: {
     left:'80%',
-    top: '-10%',
+   
     color: 'black',
     fontSize: 48,
     marginTop:'20%',

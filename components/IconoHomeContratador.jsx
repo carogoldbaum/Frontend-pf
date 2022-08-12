@@ -1,30 +1,31 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import SearchIcon from "../assets/SearchIcon.png";
+import HomeIcon from "../assets/HomeIcon.png";
 
-  const BotonLupa= () => {
+  const IconoHomeContratador= () => {
     return (
        
           <View >
 
-            <Image style={styles.ButtonLupa} source={SearchIcon}></Image>
+            <Image style={styles.ButtonHome} source={HomeIcon}></Image>
 
           </View>
   
     )
   }
 
-export default BotonLupa
+export default IconoHomeContratador
 
 const styles = StyleSheet.create({
 
 
-    ButtonLupa: {
+    ButtonHome: {
     width: 40,
     height: 40,
     padding: 10,
-    top: '-549%',
-    right: '180%',
+    top: '-1108%',
+    right: '-12%',
+    
     },
 
 });

@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     padding: 10,
-    top: '-1190%',
-    right: '-170%',
+    top: '-745%',
+    right: '-179%',
     },
 
 });

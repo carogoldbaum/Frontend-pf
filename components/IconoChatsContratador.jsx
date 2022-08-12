@@ -1,30 +1,30 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import SearchIcon from "../assets/SearchIcon.png";
+import ChatsIcon from "../assets/ChatIcon.png";
 
-  const BotonLupa= () => {
+  const IconoChatsContratador= () => {
     return (
        
           <View >
 
-            <Image style={styles.ButtonLupa} source={SearchIcon}></Image>
+            <Image style={styles.ButtonChats} source={ChatsIcon}></Image>
 
           </View>
   
     )
   }
 
-export default BotonLupa
+export default IconoChatsContratador
 
 const styles = StyleSheet.create({
 
 
-    ButtonLupa: {
+    ButtonChats: {
     width: 40,
     height: 40,
     padding: 10,
-    top: '-549%',
-    right: '180%',
+    top: '-1310%',
+    right: '-58%',
     },
 
 });

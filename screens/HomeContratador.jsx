@@ -10,7 +10,7 @@ import BotonNiñera from '../components/BotonNiñera';
 import BotonAlbañil from '../components/BotonAlbañil';
 import BotonLimpieza from '../components/BotonLimpieza';
 import BotonProfesor from '../components/BotonProfesor';
-import NavBar from '../components/NavBar';
+import NavBarContratador from '../components/NavBarContratador';
 import IconoHome from '../components/IconoHome';
 
 const HomeContratador =({navigation})=>{
@@ -19,60 +19,60 @@ const HomeContratador =({navigation})=>{
         <View>
            
             <Text style={styles.titulo}>Rubros</Text>
-
-            <BotonPlomero style={{ fontSize: 48}}
+            <View style={{borderBottomColor: 'black', borderWidth: 0.7, width:'100%', marginBottom:'10%', marginTop:'-10%', top: '56%',}}></View>
+            <BotonPlomero 
             text="Plomero" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <BotonPintor style={{ fontSize: 48}}
+            <BotonPintor 
             text="Pintor" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <BotonGasista style={{ fontSize: 48}}
+            <BotonGasista 
             text="Gasista" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <BotonElectricista style={{ fontSize: 48}}
+            <BotonElectricista 
             text="Electricista" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <BotonNiñera style={{ fontSize: 48}}
+            <BotonNiñera
             text="Niñera" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <BotonAlbañil style={{ fontSize: 48}}
+            <BotonAlbañil
             text="Albañil" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <BotonLimpieza style={{ fontSize: 48}}
+            <BotonLimpieza
             text="Limpieza" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
         }}
         />
-            <BotonProfesor style={{ fontSize: 48}}
+            <BotonProfesor 
             text="Profesor" 
             onPress={ () =>{
             navigation.navigate('HomeContratador')
         }}
         />
-            {/*
-            <View style={{borderBottomColor: 'black', borderBottomWidth: 1, width:'100%', marginBottom:'90%', marginTop:'-110%',}}></View>
             
-            <NavBar></NavBar>
-    */}
+         
+            
+            <NavBarContratador/>
+    
          
         </View>
     );
@@ -82,14 +82,6 @@ const HomeContratador =({navigation})=>{
 export default HomeContratador
 
 const styles = StyleSheet.create({
-
-    image: {
-      height:'100%',
-      width: '100%',
-      alignItems: 'center',
-      backgroundColor: '#F4F4F4',
-      
-    },
 
     titulo: {
         top: '4.5%',

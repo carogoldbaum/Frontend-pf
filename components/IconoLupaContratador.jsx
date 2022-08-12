@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import SearchIcon from "../assets/SearchIcon.png";
 
-  const BotonLupa= () => {
+  const IconoLupaContratador= () => {
     return (
        
           <View >
@@ -14,7 +14,7 @@ import SearchIcon from "../assets/SearchIcon.png";
     )
   }
 
-export default BotonLupa
+export default IconoLupaContratador
 
 const styles = StyleSheet.create({
 
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     padding: 10,
-    top: '-549%',
-    right: '180%',
+    top: '-1208%',
+    right: '-35%',
     },
 
 });
