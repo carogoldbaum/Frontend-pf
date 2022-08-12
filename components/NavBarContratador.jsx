@@ -42,6 +42,13 @@ const NavBarContratador = (props) => {
         /> 
               */ }
               
+              <Image style={styles.ButtonChats} source={ChatsIcon}></Image>
+
+              <Image style={styles.ButtonHome} source={HomeIcon}></Image>
+
+              <Image style={styles.ButtonLupa} source={SearchIcon}></Image>
+
+              <Image style={styles.BotonProfile} source={ProfileIcon}></Image>
         
 
          </View>
@@ -54,5 +61,34 @@ export default NavBarContratador
 
 const styles = StyleSheet.create({
 
+        ButtonChats: {
+                width: 40,
+                height: 40,
+                padding: 10,
+                top: '-1310%',
+                right: '-58%',
+                },
+                ButtonHome: {
+                        width: 40,
+                        height: 40,
+                        padding: 10,
+                        top: '-1108%',
+                        right: '-12%',
+                        
+                        },
+                        ButtonLupa: {
+                                width: 40,
+                                height: 40,
+                                padding: 10,
+                                top: '-1208%',
+                                right: '-35%',
+                                },
+                                BotonProfile: {
+                                        width: 40,
+                                        height: 40,
+                                        padding: 10,
+                                        top: '-1410%',
+                                        right: '-78%',
+                                        },
 
 });
