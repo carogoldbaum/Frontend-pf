@@ -11,7 +11,6 @@ import BotonAlbañil from '../components/BotonAlbañil';
 import BotonLimpieza from '../components/BotonLimpieza';
 import BotonProfesor from '../components/BotonProfesor';
 import NavBarContratador from '../components/NavBarContratador';
-import IconoHome from '../components/IconoHome';
 
 const HomeContratador =({navigation})=>{
 
