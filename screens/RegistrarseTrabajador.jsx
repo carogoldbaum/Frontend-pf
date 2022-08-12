@@ -132,6 +132,7 @@ const RegistrarseTrabajador = ({navigation}) => {
         borderWidth: 2,
         padding:'3%',
         top: '8%',
+        backgroundColor: '#F4F4F4',
 
       },
 
@@ -144,7 +145,7 @@ const RegistrarseTrabajador = ({navigation}) => {
           borderWidth: 2,
           top: '18%',
           borderRadius: 0,
-          backgroundColor:'transparent'
+          backgroundColor: '#F4F4F4',
         },
     
       image: {
