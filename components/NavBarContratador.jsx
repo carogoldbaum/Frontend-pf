@@ -6,6 +6,11 @@ import IconoLupaContratador from './IconoLupaContratador';
 import IconoChatsContratador from './IconoChatsContratador';
 import IconoProfileContratador from './IconoProfileContratador';
 
+import ChatsIcon from "../assets/ChatIcon.png";
+import HomeIcon from "../assets/HomeIcon.png";
+import SearchIcon from "../assets/SearchIcon.png";
+import ProfileIcon from "../assets/ProfileIcon.png";
+
 const NavBarContratador = (props) => {
 
     const { onPress, text } = props
@@ -14,8 +19,8 @@ const NavBarContratador = (props) => {
     
          <View >
               
-              
-        <IconoHomeContratador 
+              {/* 
+              <IconoHomeContratador 
                 onPress={ () =>{
                 navigation.navigate('')
         }}
@@ -35,6 +40,9 @@ const NavBarContratador = (props) => {
                 navigation.navigate('')
         }}
         /> 
+              */ }
+              
+        
 
          </View>
        
