@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 180,
     backgroundColor: '#F9904F',
-    top: '-2%'
+    top: '20%'
     },
 
     TextoTrabajar: {
     fontWeight: 'bold',
-    top: '2%',
+    top: '22%',
     textAlign: 'center',
     fontSize: 15,
     },
