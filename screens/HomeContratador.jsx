@@ -68,14 +68,11 @@ const HomeContratador =({navigation})=>{
             navigation.navigate('HomeContratador')
         }}
         />
-
-            <NavBar/>
+            {/*
+            <View style={{borderBottomColor: 'black', borderBottomWidth: 1, width:'100%', marginBottom:'90%', marginTop:'-110%',}}></View>
             
-            <IconoHome
-            onPress={ () =>{
-            navigation.navigate('HomeContratador')
-        }}
-        />
+            <NavBar></NavBar>
+    */}
          
         </View>
     );

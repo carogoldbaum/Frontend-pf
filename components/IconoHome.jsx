@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
 
 
     ButtonHome: {
-    width: 90,
-    height: 90,
+    width: 40,
+    height: 40,
     padding: 10,
-    top: '300%',
-    right: '-90%',
+    top: '-890%',
+    right: '350%',
     },
 
 });

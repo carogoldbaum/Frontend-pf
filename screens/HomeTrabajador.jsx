@@ -7,6 +7,8 @@ import BotonSolicitudesDeTrabajoHomeTrabajador from '../components/BotonSolicitu
 import { useNavigation } from '@react-navigation/native';
 import TituloHomeTrabajador from "../components/TituloHomeTrabajador";
 
+import NavBar from '../components/NavBar';
+
 const HomeTrabajador =({navigation})=>{
 
 
@@ -33,7 +35,8 @@ const HomeTrabajador =({navigation})=>{
                 }}
                 
             />
-
+            <View style={{borderBottomColor: 'black', borderBottomWidth: 1, width:'100%', marginBottom:'90%', marginTop:'-40%',}}></View>
+            <NavBar></NavBar>
         </View>
     );
 }

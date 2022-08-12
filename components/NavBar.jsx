@@ -1,6 +1,10 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import BotonHome from '../components/IconoHome';
+import BotonLupa from '../components/IconoLupa';
+import BotonAgenda from '../components/IconoAgenda';
+import BotonChats from '../components/IconoChats';
+import BotonProfile from '../components/IconoProfile';
 
 const NavBar = (props) => {
 
@@ -9,13 +13,32 @@ const NavBar = (props) => {
     return (
     
          <View >
-              <Image style={styles.EspacioEnBlancoTrabajar}></Image>
-              <BotonHome
+              
+              <BotonHome style={styles.Casita}
                 onPress={ () =>{
-                navigation.navigate('HomeContratador')
+                navigation.navigate('')
         }}
         />  
-           
+          <BotonLupa style={styles.Casita}
+                onPress={ () =>{
+                navigation.navigate('')
+        }}
+        />  
+        <BotonAgenda style={styles.Casita}
+                onPress={ () =>{
+                navigation.navigate('')
+        }}
+        />  
+           <BotonChats style={styles.Casita}
+                onPress={ () =>{
+                navigation.navigate('')
+        }}
+        /> 
+        <BotonProfile style={styles.Casita}
+                onPress={ () =>{
+                navigation.navigate('')
+        }}
+        /> 
          </View>
        
     )
@@ -36,5 +59,11 @@ const styles = StyleSheet.create({
         borderColor: 'black',
 
     },
+
+    Casita:{
+        marginBottom:'90%',
+        marginTop:'-120%',
+        marginLeft:'-10%',
+    }
 
 });
