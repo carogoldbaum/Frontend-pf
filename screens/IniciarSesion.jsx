@@ -33,6 +33,7 @@ const IniciarSesion =({navigation})=>{
               onChangeText={text => setUserState({ ...userState, password: text })}
               value={userState.password}
               placeholder="Contraseña"
+              secureTextEntry={true}
             />
                
                <OlvideContraseña

@@ -34,12 +34,14 @@ const Registrarse =({navigation})=>{
               onChangeText={text => setUserState({ ...userState, password: text })}
               value={userState.password}
               placeholder="Contraseña"
+              secureTextEntry={true}
             />
             <TextInput   
               style={styles.dato}
               onChangeText={text => setUserState({ ...userState, password2: text })}
               value={userState.password2}
               placeholder="Repetir Contraseña"
+              secureTextEntry={true}
               
             />
             {error && <Text style={styles.alerta}>Completar datos</Text>}

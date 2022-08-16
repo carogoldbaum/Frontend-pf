@@ -33,12 +33,14 @@ const RestablecerContraseña =({navigation})=>{
               onChangeText={text => setUserState({ ...userState, password: text })}
               value={userState.password}
               placeholder="Nueva Contraseña"
+              secureTextEntry={true}
             />
             <TextInput   
               style={styles.dato}
               onChangeText={text => setUserState({ ...userState, password2: text })}
               value={userState.password2}
               placeholder="Confirmar Contraseña"
+              secureTextEntry={true}
               
             />
                
