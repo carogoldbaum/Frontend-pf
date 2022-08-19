@@ -1,10 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import IconoHomeContratador from './IconoHomeContratador';
-import IconoLupaContratador from './IconoLupaContratador';
 
-import IconoChatsContratador from './IconoChatsContratador';
-import IconoProfileContratador from './IconoProfileContratador';
 
 import ChatsIcon from "../assets/ChatIcon.png";
 import HomeIcon from "../assets/HomeIcon.png";
@@ -19,28 +15,7 @@ const NavBarContratador = (props) => {
     
          <View >
               
-              {/* 
-              <IconoHomeContratador 
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        />  
-          <IconoLupaContratador
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        />  
-        <IconoChatsContratador 
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        /> 
-        <IconoProfileContratador 
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        /> 
-              */ }
+              
               
               <Image style={styles.ButtonChats} source={ChatsIcon}></Image>
 
@@ -62,33 +37,33 @@ export default NavBarContratador
 const styles = StyleSheet.create({
 
         ButtonChats: {
-                width: 40,
-                height: 40,
-                padding: 10,
-                top: '-1310%',
-                right: '-58%',
-                },
-                ButtonHome: {
-                        width: 40,
-                        height: 40,
-                        padding: 10,
-                        top: '-1108%',
-                        right: '-12%',
+         width: 40,
+         height: 40,
+         padding: 10,
+        top: '-270%',
+        right: '-56%',
+         },
+        ButtonHome: {
+         width: 40,
+         height: 40,
+        padding: 10,
+         top: '-295%',
+        right: '-12%',
                         
-                        },
-                        ButtonLupa: {
-                                width: 40,
-                                height: 40,
-                                padding: 10,
-                                top: '-1208%',
-                                right: '-35%',
-                                },
-                                BotonProfile: {
-                                        width: 40,
-                                        height: 40,
-                                        padding: 10,
-                                        top: '-1410%',
-                                        right: '-78%',
-                                        },
+          },
+        ButtonLupa: {
+        width: 40,
+         height: 40,
+         padding: 10,
+         top: '-320%',
+         right: '-34%',
+         },
+        BotonProfile: {
+         width: 40,
+        height: 40,
+        padding: 10,
+         top: '-346%',
+         right: '-78%',
+         },
 
 });
