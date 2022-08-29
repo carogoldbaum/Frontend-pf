@@ -3,7 +3,7 @@ import { Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const BotonPicker = (props) => {
 
-    const { onPress, text, disable } = props
+    const { onPress, title, disable } = props
 
     return (
     
@@ -14,7 +14,7 @@ const BotonPicker = (props) => {
             
         >
             <Text  style={styles.button3Text}>
-            DD/MM/YYYY
+            {title}
             </Text>
 
         </TouchableOpacity>

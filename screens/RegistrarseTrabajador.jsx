@@ -1,11 +1,10 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground, Button } from 'react-native';
+import { StyleSheet, Text, View, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground, Button, Alert } from 'react-native';
 import BotonSiguienteRegistrarse from "../components/BotonSiguienteRegistrarse";
 import fondo from "../assets/fondo.jpg";
 import SelectDropdown from 'react-native-select-dropdown';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import BotonPicker from '../components/BotonDatePicker';
 
 const RegistrarseTrabajador = ({ navigation }) => {
@@ -29,24 +28,32 @@ const RegistrarseTrabajador = ({ navigation }) => {
   const [userState, setUserState] = useState({
     nombre: '',
     celular: '',
-    fecha: ''
+    fechas: ''
   });
 
   const [error, setError] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
-  const [date, setDate] = React.useState(new Date());
+  const [fecha, setFecha] = React.useState('');
   const [showDate, setShowDate] = React.useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
 
-  const showMode = (currentMode) => {
-    DateTimePickerAndroid.open({
-      value: date,
-      mode: currentMode,
-      is24Hour: true,
-    });
+ 
+  const handleConfirm = (date) => {
+    const fechar = new Date(date);  
+    const ModificarFecha=`${fechar.getFullYear()} ${fechar.getMonth()} ${fechar.getDate()}`
+  Alert.alert("entro")
+  
+    
+
+    console.warn("A date has been picked: ", fecha);
+    hideDatePicker();
+    setFecha(ModificarFecha);
   };
-
   const showDatepicker = () => {
-    showMode('date');
+    setDatePickerVisibility(true);
+  };
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
   };
 
   return (
@@ -71,84 +78,19 @@ const RegistrarseTrabajador = ({ navigation }) => {
           placeholder="Número de Celular"
           keyboardType="numeric"
         />
-        {/*
-           <TextInput   
-              style={styles.dato}
-              onChangeText={text => setUserState({ ...userState, fecha: text })}
-              value={userState.fecha}
-              placeholder="DD/MM/AA"
-              
-            />
-           */}
+        
 
-
-        {/*
-            <DatePicker
-          style={styles.datePickerStyle}
-          date={date}
-          mode="date"
-          placeholder="select date"
-          format="DD/MM/YYYY"
-          minDate="01-01-1900"
-          maxDate="01-01-2000"
-          confirmBtnText="Confirm"
-          cancelBtnText="Cancel"
-          customStyles={{
-            dateIcon: {
-              position: 'absolute',
-              right: -5,
-              top: 4,
-              marginLeft: 0,
-            },
-            dateInput: {
-              borderColor : "gray",
-              alignItems: "flex-start",
-              borderWidth: 0,
-              borderBottomWidth: 1,
-            },
-            placeholderText: {
-              fontSize: 17,
-              color: "gray"
-            },
-            dateText: {
-              fontSize: 17,
-            }
-          }}
-          onDateChange={(date) => {
-            setDate(date);
-          }}
-        />
-            */ }
-
-        {showDate && (
+        
           <DateTimePickerModal
             style={styles.datePickerStyle}
-            value={date}
-            //date={date} // Initial date from state
+            isVisible={isDatePickerVisible}
             mode="date" // The enum of date, datetime and time
-            placeholder="select date"
-            format="DD-MM-YYYY"
-            minDate="01-01-2016"
-            maxDate="01-01-2024"
-            confirmBtnText="Confirm"
-            cancelBtnText="Cancel"
-            customStyles={{
-              dateIcon: {
-                //display: 'none',
-                position: 'absolute',
-                left: 0,
-                top: 4,
-                marginLeft: 0,
-              },
-              dateInput: {
-                marginLeft: 36,
-              },
-            }}
-            onChange={(_, date) => {
-              setDate(date);
-              setShowDate(false)
-            }}
-          />)}
+          
+            onConfirm={handleConfirm}
+            onCancel={hideDatePicker}
+            
+           
+          />
 
         <BotonPicker
           style={{fontSize: 18,
@@ -160,8 +102,8 @@ const RegistrarseTrabajador = ({ navigation }) => {
             padding: '3%',
             top: '8%',
             backgroundColor: '#F4F4F4',}}
-          onPress={() => setShowDate(true)}
-          title={"Pick a date, the current one is: " + date.getFullYear() + "/" + date.getMonth() + "/" + date.getDate()}
+          onPress={showDatepicker}
+          title={"Pick a date, the current one is: "+ fecha}
         />
 
 
@@ -192,7 +134,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
           text="SIGUIENTE"
           onPress={async () => {
             setDisable(true)
-            if (userState.nombre == '' || userState.celular == '' || userState.fecha == '') {
+            if (userState.nombre == '' || userState.celular == '' /*|| userState.fecha == ''*/) {
               setError(true)
             }
             else {

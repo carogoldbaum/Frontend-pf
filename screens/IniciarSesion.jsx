@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChange
 import BotonIniciarSesion from "../components/BotonIniciarSesion";
 import fondo from "../assets/fondo.jpg";
 import OlvideContraseña from "../components/OlvideContraseña"
-import { getIniciarSesion } from '../Axios/axiosClient';
 
 const IniciarSesion = ({ navigation }) => {
 
