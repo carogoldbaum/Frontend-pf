@@ -103,7 +103,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
             top: '8%',
             backgroundColor: '#F4F4F4',}}
           onPress={showDatepicker}
-          title={"Pick a date, the current one is: "+ fecha}
+          title={ fecha}
         />
 
 
