@@ -6,6 +6,7 @@ import SelectDropdown from 'react-native-select-dropdown';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import BotonPicker from '../components/BotonDatePicker';
+import * as ImagePicker from 'expo-image-picker';
 
 const RegistrarseTrabajador = ({ navigation }) => {
 
@@ -36,7 +37,8 @@ const RegistrarseTrabajador = ({ navigation }) => {
   const [fecha, setFecha] = React.useState('');
   const [showDate, setShowDate] = React.useState(false);
   const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
-
+  const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
+  const [image, setImage] = useState(null);
  
   const handleConfirm = (date) => {
     const fechar = new Date(date);  
@@ -55,6 +57,31 @@ const RegistrarseTrabajador = ({ navigation }) => {
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
+
+  useEffect(()=>{
+    (async () => {
+      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      setHasGalleryPermission(galleryStatus.status === 'granted');
+    })();
+    
+  }, [])
+
+  const pickImage = async () =>{
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect:[4,3],
+      quality:1,
+    });
+    console.log(result)
+    if(!result.cancelled){
+      setImage(result.uri);
+    };
+
+    if(hasGalleryPermission === false){
+      return <Text>No access</Text>
+    }
+  }
 
   return (
 
@@ -117,13 +144,14 @@ const RegistrarseTrabajador = ({ navigation }) => {
           setValue={setValue}
           setItems={setItems}
         />
-        <TextInput
+        <Button
           style={styles.dato}
           onChangeText={onChangeText}
           value={String}
-          placeholder="Insertar foto de DNI"
+          title="Insertar foto de DNI"
+          omPress={() => pickImage()}
         />
-
+        {image && <Image source={{uri:image}}/>}
 
         <Text style={{ marginLeft: '11%', marginRight: '10%', fontSize: 13, top: '9%' }}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
 
