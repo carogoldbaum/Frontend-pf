@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChange
 import BotonIniciarSesion from "../components/BotonIniciarSesion";
 import fondo from "../assets/fondo.jpg";
 import OlvideContraseña from "../components/OlvideContraseña"
+import { postIniciarSesion } from '../axios/axiosClient';
 
 const IniciarSesion = ({ navigation }) => {
 
@@ -50,35 +51,41 @@ const IniciarSesion = ({ navigation }) => {
           text="INGRESAR"
           onPress={async () => {
             setDisable(true)
-           
+           console.log("todo bien 1")
             if (userState.email == '' || userState.password == '') { //si hay datos incompletos
               setError(true)
-              
+              console.log("todo bien 2")
             }
             else if (userState.email != '' || userState.password != '') { //si datos completos
-        
-              await getIniciarSesion(userState).then((data) => {
-               
-                if (data == true){ //si la informacion etsa bien
-           
+              console.log("todo bien 33")
+          
+              await postIniciarSesion(userState).then((data) => {
+                console.log("todo bien 3")
+                if (data === true){ //si la informacion etsa bien
+                  console.log("todo bien 4")
+                  setError(false)
                 setDisable(true)
 
                 navigation.navigate('SeleccionarComoIngresar')
 
                } else { //si la informacion no etsa bien
                 setError(true) 
+                console.log(data)
+                console.log("todo bien 5")
                }
                if (data != true &&  (userState.email == '' || userState.password == '') ) { //si la informacion no etsa bien y hay datos incompletos
                 setError(true)
+                console.log("todo bien 6")
                }
              
               })
                 .catch(() => {
-              
+                  console.log("todo bien 7")
                   setDisable(false)
                 });
 
             } setDisable(false)
+            console.log("todo bien 8")
           }
           }
         />
