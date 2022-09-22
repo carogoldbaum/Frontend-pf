@@ -6,13 +6,11 @@ import SelectDropdown from 'react-native-select-dropdown';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import BotonPicker from '../components/BotonDatePicker';
-import * as ImagePicker from 'expo-image-picker';
 
 const RegistrarseTrabajador = ({ navigation }) => {
 
-
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(null);
+  const [rubro, setRubro] = useState(null);
   const [items, setItems] = useState([
     { label: 'Niñera', value: 'Niñera' },
     { label: 'Pintor', value: 'Pintor' },
@@ -22,32 +20,30 @@ const RegistrarseTrabajador = ({ navigation }) => {
     { label: 'Profesor', value: 'Profesor' },
     { label: 'Limpieza', value: 'Limpieza' },
     { label: 'Electricista', value: 'Electricista' },
-
-
+    await postRegistrarse(userState).then((data) => {
+      { data }
+    })
+  
   ]);
 
   const [userState, setUserState] = useState({
     nombre: '',
     celular: '',
-    fechas: ''
+    fechas: '',
+    rubro: '',
   });
 
   const [error, setError] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
   const [fecha, setFecha] = React.useState('');
+
   const [showDate, setShowDate] = React.useState(false);
   const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
-  const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
-  const [image, setImage] = useState(null);
- 
-  const handleConfirm = (date) => {
-    const fechar = new Date(date);  
-    const ModificarFecha=`${fechar.getFullYear()} ${fechar.getMonth()} ${fechar.getDate()}`
-  Alert.alert("entro")
-  
-    
 
-    console.warn("A date has been picked: ", fecha);
+  const handleConfirm = (date) => {
+    const fechar = new Date(date);
+    const ModificarFecha = `${fechar.getFullYear()} ${fechar.getMonth()} ${fechar.getDate()}`
+
     hideDatePicker();
     setFecha(ModificarFecha);
   };
@@ -57,31 +53,6 @@ const RegistrarseTrabajador = ({ navigation }) => {
   const hideDatePicker = () => {
     setDatePickerVisibility(false);
   };
-
-  useEffect(()=>{
-    (async () => {
-      const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      setHasGalleryPermission(galleryStatus.status === 'granted');
-    })();
-    
-  }, [])
-
-  const pickImage = async () =>{
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect:[4,3],
-      quality:1,
-    });
-    console.log(result)
-    if(!result.cancelled){
-      setImage(result.uri);
-    };
-
-    if(hasGalleryPermission === false){
-      return <Text>No access</Text>
-    }
-  }
 
   return (
 
@@ -105,22 +76,21 @@ const RegistrarseTrabajador = ({ navigation }) => {
           placeholder="Número de Celular"
           keyboardType="numeric"
         />
-        
 
-        
-          <DateTimePickerModal
-            style={styles.datePickerStyle}
-            isVisible={isDatePickerVisible}
-            mode="date" // The enum of date, datetime and time
-          
-            onConfirm={handleConfirm}
-            onCancel={hideDatePicker}
-            
-           
-          />
+        <DateTimePickerModal
+          style={styles.datePickerStyle}
+          isVisible={isDatePickerVisible}
+          mode="date" // The enum of date, datetime and time
+          onChangeText={text => setUserState({ ...userState, fechas: text })}
+          value={userState.fechas}
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+        />
 
         <BotonPicker
-          style={{fontSize: 18,
+          placeholder="Seleccionar fecha nacimineto"
+          style={{
+            fontSize: 18,
             marginTop: '5%',
             marginLeft: '0%',
             width: '80%',
@@ -128,30 +98,24 @@ const RegistrarseTrabajador = ({ navigation }) => {
             borderWidth: 2,
             padding: '3%',
             top: '8%',
-            backgroundColor: '#F4F4F4',}}
-          onPress={showDatepicker}
-          title={ fecha}
-        />
+            backgroundColor: '#F4F4F4',
+          }}
 
+          onPress={showDatepicker}
+          title={fecha}
+        />
 
         <DropDownPicker
           style={styles.DropDownPicker}
           placeholder="Seleccionar Rubros"
           open={open}
-          value={value}
+          value={rubro}
           items={items}
           setOpen={setOpen}
-          setValue={setValue}
+          setValue={setItems}
           setItems={setItems}
+          onChangeText={text => setUserState({ ...userState, rubro: text })}
         />
-        <Button
-          style={styles.dato}
-          onChangeText={onChangeText}
-          value={String}
-          title="Insertar foto de DNI"
-          omPress={() => pickImage()}
-        />
-        {image && <Image source={{uri:image}}/>}
 
         <Text style={{ marginLeft: '11%', marginRight: '10%', fontSize: 13, top: '9%' }}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
 
@@ -162,20 +126,21 @@ const RegistrarseTrabajador = ({ navigation }) => {
           text="SIGUIENTE"
           onPress={async () => {
             setDisable(true)
-            if (userState.nombre == '' || userState.celular == '' /*|| userState.fecha == ''*/) {
+            console.log(userState)
+            if (userState.nombre == '' || userState.celular == '' || userState.fechas == '' || userState.rubro == '') {//si hay datos incompletos
               setError(true)
             }
-            else {
-              //await PostLogIn(userState).then(() => {
-              setDisable(false)
-              navigation.navigate('HomeTrabajador')
+            else {//si hay datos completos}
+              console.log(userState)
+              await PostLogIn(userState).then(() => {
+                setDisable(false)
+                navigation.navigate('HomeTrabajador')
 
-              //})
-              //.catch(() => {
-              //console.log("Datos mal")
-              //setError(true)
-              // setDisable(false)
-              // });
+              })
+                .catch((err) => {
+                  console.error("todo bien 7", err)
+                  setDisable(false)
+                });
 
             } setDisable(false)
           }
@@ -184,7 +149,6 @@ const RegistrarseTrabajador = ({ navigation }) => {
       </ImageBackground>
     </View>
   );
-
 }
 
 export default RegistrarseTrabajador
@@ -195,7 +159,6 @@ const styles = StyleSheet.create({
     top: '8%',
     marginLeft: '-13%',
     fontSize: 34,
-
   },
 
   dato: {
@@ -208,7 +171,6 @@ const styles = StyleSheet.create({
     padding: '3%',
     top: '8%',
     backgroundColor: '#F4F4F4',
-
   },
 
   DropDownPicker: {
@@ -227,7 +189,6 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     alignItems: 'center',
-
   },
 
   alerta: {
@@ -244,14 +205,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+
   title: {
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
     padding: 20,
-  },
-  datePickerStyle: {
-    width: 200,
-    marginTop: '-200%',
   },
 });
