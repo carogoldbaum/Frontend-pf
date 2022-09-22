@@ -8,8 +8,8 @@ import { postRestablecer } from '../axios/axiosClient';
 const RestablecerContraseña = ({ navigation }) => {
   const [userState, setUserState] = useState({
     email: '',
-    password: '',
-    password2: ''
+    password2: '',
+    password3: ''
   });
   const [error, setError] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
@@ -31,15 +31,15 @@ const RestablecerContraseña = ({ navigation }) => {
         />
         <TextInput
           style={styles.dato}
-          onChangeText={text => setUserState({ ...userState, password: text })}
-          value={userState.password}
+          onChangeText={text => setUserState({ ...userState, password2: text })}
+          value={userState.password2}
           placeholder="Nueva Contraseña"
           secureTextEntry={true}
         />
         <TextInput
           style={styles.dato}
-          onChangeText={text => setUserState({ ...userState, password2: text })}
-          value={userState.password2}
+          onChangeText={text => setUserState({ ...userState, password3: text })}
+          value={userState.password3}
           placeholder="Confirmar Contraseña"
           secureTextEntry={true}
 
@@ -51,24 +51,23 @@ const RestablecerContraseña = ({ navigation }) => {
           text="SIGUIENTE"
           onPress={async () => {
             setDisable(true)
-            console.log("todo bien 1")
-            if (userState.email == '' || userState.password == '' || userState.password2 == '') { //si hay datos incompletos
+       
+            if (userState.email == '' || userState.password2 == '' || userState.password3 == '') { //si hay datos incompletos
               setError(true)
-              console.log("todo bien 2")
-            } else if (userState.password === userState.password2) {//si datos completos
-              console.log("todo bien 3")
+             
+            } else if (userState.password2 === userState.password3) {//si datos completos
+        
               await postRestablecer(userState).then(() => {
-                console.log("todo bien 4")
+              
                 setDisable(true)
                 setError(false)
                 navigation.navigate('IniciarSesion')
 
-              }).catch(() => {
-                console.log("todo bien 5")
+              }) .catch((err) => {
+                console.error("todo bien 7", err)
                 setDisable(false)
               });
             }
-            console.log("todo bien 6")
             setDisable(false)
           }
           }

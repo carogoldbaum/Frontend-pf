@@ -50,7 +50,7 @@ const Registrarse = ({ navigation }) => {
             else if (userState.email != '' || userState.password != '') {//si datos completos
 
               await postRegistrarse(userState).then((data) => {
-                if (data != "Mail ya existe") {
+                if (data.data != "Mail ya existe") {
                   setDisable(true)
                   navigation.navigate('SeleccionarUsuario')
 
@@ -59,20 +59,21 @@ const Registrarse = ({ navigation }) => {
 
                 }
 
-                if (data === "Mail ya existe" && (userState.email == '' || userState.password == '')) { //si la informacion no etsa bien y hay datos incompletos
+                if (data.data === "Mail ya existe" && (userState.email == '' || userState.password == '')) { //si la informacion no etsa bien y hay datos incompletos
                   setError(true)
 
                 }
 
               })
-                .catch(() => {
-
-                  setDisable(false)
-                });
+              .catch((err) => {
+                console.error("todo bien 7", err)
+                setDisable(false)
+              });
 
             } setDisable(false)
           }
           }
+
         />
       </ImageBackground>
     </View>

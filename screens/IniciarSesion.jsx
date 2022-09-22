@@ -57,11 +57,11 @@ const IniciarSesion = ({ navigation }) => {
               console.log("todo bien 2")
             }
             else if (userState.email != '' || userState.password != '') { //si datos completos
-              console.log("todo bien 33")
+              console.log("muestro user data", userState)
           
               await postIniciarSesion(userState).then((data) => {
-                console.log("todo bien 3")
-                if (data === true){ //si la informacion etsa bien
+                console.log("muestro response data", data.data)
+                if (data.data === true){ //si la informacion etsa bien
                   console.log("todo bien 4")
                   setError(false)
                 setDisable(true)
@@ -70,7 +70,7 @@ const IniciarSesion = ({ navigation }) => {
 
                } else { //si la informacion no etsa bien
                 setError(true) 
-                console.log(data)
+                console.log(data.data)
                 console.log("todo bien 5")
                }
                if (data != true &&  (userState.email == '' || userState.password == '') ) { //si la informacion no etsa bien y hay datos incompletos
@@ -79,8 +79,8 @@ const IniciarSesion = ({ navigation }) => {
                }
              
               })
-                .catch(() => {
-                  console.log("todo bien 7")
+                .catch((err) => {
+                  console.error("todo bien 7", err)
                   setDisable(false)
                 });
 
