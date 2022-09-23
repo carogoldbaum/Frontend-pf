@@ -6,14 +6,8 @@ const axiosClient = axios.create ({
 })
 
 export const getRubro = async () => {
-    return axiosClient.get('/rubros/rubro', {
+    return axiosClient.get('/rubros/rubro')
     
-    }).then(function(res){
-        return res.data.results
-    })
-    .catch(function(){
-        throw "Error"
-    })
 }
 
 export const postRegistrarse = async (informacion3) => {

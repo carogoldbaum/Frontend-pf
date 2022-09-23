@@ -7,22 +7,30 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import BotonPicker from '../components/BotonDatePicker';
 import { postDatosPersonales } from '../axios/axiosClient';
+import { getRubro } from '../axios/axiosClient';
+import { FlatList } from 'react-native-web';
 
 const RegistrarseTrabajador = ({ navigation }) => {
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: 'Niñera', value: 'Niñera' },
-    { label: 'Pintor', value: 'Pintor' },
-    { label: 'Albañil', value: 'Albañil' },
-    { label: 'Plomero', value: 'Plomero' },
-    { label: 'Gasista', value: 'Gasista' },
-    { label: 'Profesor', value: 'Profesor' },
-    { label: 'Limpieza', value: 'Limpieza' },
     { label: 'Electricista', value: 'Electricista' },
-
   ]);
+
+  const [test, setTest] = useState([])
+
+  getRubro().then((data) => {
+    // console.log('getRubro', data.data, 'fin')
+    setTest(data.data)
+  })
+
+  useEffect(() =>{
+    if(test){
+      test.map((x)=>{
+        console.log('adentro del map: ', x.Nombre)
+      })
+  }}, [])
 
   const [userState, setUserState] = useState({
     nombre: '',
@@ -52,8 +60,16 @@ const RegistrarseTrabajador = ({ navigation }) => {
     setDatePickerVisibility(false);
   };
 
-  return (
+  const probando = () =>{
+    let nombres = []
+    {test.map((x)=>{
+        nombres.push(x.Nombre)
+      })}
 
+    return nombres
+  }
+
+  return test.length ? (
     <View>
 
       <ImageBackground source={fondo} style={styles.image}>
@@ -108,12 +124,21 @@ const RegistrarseTrabajador = ({ navigation }) => {
           placeholder="Seleccionar Rubros"
           open={open}
           value={value}
-          items={items}
+          items={test.map((item)=>
+            ({value: items.Nombre, label: items.Nombre}))}
           setOpen={setOpen}
           setValue={setValue}
-          setItems={setItems}
+          setItems={setTest}
           onChangeText={text => setUserState({ ...userState, rubro: text })}
         />
+        
+
+        
+        {/* {test.map((x)=>{
+          return(
+            <Text>{x.Nombre}</Text>
+          )
+        })} */}
 
         <TextInput
           style={styles.dato}
@@ -155,7 +180,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
         />
       </ImageBackground>
     </View>
-  );
+  ): (<Text>Cargando...</Text>);
 }
 
 export default RegistrarseTrabajador
