@@ -6,11 +6,12 @@ import SelectDropdown from 'react-native-select-dropdown';
 import DropDownPicker from 'react-native-dropdown-picker';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import BotonPicker from '../components/BotonDatePicker';
+import { postDatosPersonales } from '../axios/axiosClient';
 
 const RegistrarseTrabajador = ({ navigation }) => {
 
   const [open, setOpen] = useState(false);
-  const [rubro, setRubro] = useState(null);
+  const [value, setValue] = useState(null);
   const [items, setItems] = useState([
     { label: 'Niñera', value: 'Niñera' },
     { label: 'Pintor', value: 'Pintor' },
@@ -20,22 +21,19 @@ const RegistrarseTrabajador = ({ navigation }) => {
     { label: 'Profesor', value: 'Profesor' },
     { label: 'Limpieza', value: 'Limpieza' },
     { label: 'Electricista', value: 'Electricista' },
-    await postRegistrarse(userState).then((data) => {
-      { data }
-    })
-  
+
   ]);
 
   const [userState, setUserState] = useState({
     nombre: '',
     celular: '',
-    fechas: '',
-    rubro: '',
+    dni:  '',
   });
 
   const [error, setError] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
   const [fecha, setFecha] = React.useState('');
+  const [dni, setDNI] = React.useState('');
 
   const [showDate, setShowDate] = React.useState(false);
   const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
@@ -109,12 +107,21 @@ const RegistrarseTrabajador = ({ navigation }) => {
           style={styles.DropDownPicker}
           placeholder="Seleccionar Rubros"
           open={open}
-          value={rubro}
+          value={value}
           items={items}
           setOpen={setOpen}
-          setValue={setItems}
+          setValue={setValue}
           setItems={setItems}
           onChangeText={text => setUserState({ ...userState, rubro: text })}
+        />
+
+        <TextInput
+          style={styles.dato}
+          onChangeText={text => setUserState({ ...userState, dni: text })}
+          value={userState.dni}
+          placeholder="Ingrese DNI"
+          keyboardType="numeric"
+
         />
 
         <Text style={{ marginLeft: '11%', marginRight: '10%', fontSize: 13, top: '9%' }}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
@@ -126,13 +133,13 @@ const RegistrarseTrabajador = ({ navigation }) => {
           text="SIGUIENTE"
           onPress={async () => {
             setDisable(true)
-            console.log(userState)
-            if (userState.nombre == '' || userState.celular == '' || userState.fechas == '' || userState.rubro == '') {//si hay datos incompletos
+            console.log(userState, value, fecha)
+            if (userState.nombre == '' || userState.celular == '' || value == '' || fecha == '' || userState.dni == '')  {//si hay datos incompletos
               setError(true)
             }
             else {//si hay datos completos}
-              console.log(userState)
-              await PostLogIn(userState).then(() => {
+              console.log(userState, value, fecha)
+              await postDatosPersonales(userState, value, fecha).then(() => {
                 setDisable(false)
                 navigation.navigate('HomeTrabajador')
 

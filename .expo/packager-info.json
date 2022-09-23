@@ -1,9 +1,9 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19000,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://az-ewk.anonymous.frontend-pf.exp.direct",
+  "packagerNgrokUrl": "https://az-ewk.anonymous.frontend-pf.exp.direct",
+  "ngrokPid": 4300,
   "webpackServerPort": null
 }
