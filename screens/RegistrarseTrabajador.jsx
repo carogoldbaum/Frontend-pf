@@ -26,14 +26,14 @@ const RegistrarseTrabajador = ({ navigation }) => {
   }, [])
 
   const [userState, setUserState] = useState({
-    nombre: '',
-    celular: '',
-    dni:  '',
+    NombreApellido: '',
+    Celular: '',
+    DNI: '',
   });
 
   const [error, setError] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
-  const [fecha, setFecha] = React.useState('');
+  const [FechaNacimiento, setFecha] = React.useState('');
 
   const [showDate, setShowDate] = React.useState(false);
   const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
@@ -61,15 +61,15 @@ const RegistrarseTrabajador = ({ navigation }) => {
 
         <TextInput
           style={styles.dato}
-          onChangeText={text => setUserState({ ...userState, nombre: text })}
-          value={userState.nombre}
+          onChangeText={text => setUserState({ ...userState, NombreApellido: text })}
+          value={userState.NombreApellido}
           placeholder="Nombre y Apellido"
 
         />
         <TextInput
           style={styles.dato}
-          onChangeText={text => setUserState({ ...userState, celular: text })}
-          value={userState.celular}
+          onChangeText={text => setUserState({ ...userState, Celular: text })}
+          value={userState.Celular}
           placeholder="Número de Celular"
           keyboardType="numeric"
         />
@@ -78,8 +78,8 @@ const RegistrarseTrabajador = ({ navigation }) => {
           style={styles.datePickerStyle}
           isVisible={isDatePickerVisible}
           mode="date" // The enum of date, datetime and time
-          onChangeText={text => setUserState({ ...userState, fechas: text })}
-          value={userState.fechas}
+          onChangeText={text => setUserState({ ...userState, FechaNacimiento: text })}
+          value={userState.FechaNacimiento}
           onConfirm={handleConfirm}
           onCancel={hideDatePicker}
         />
@@ -99,7 +99,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
           }}
 
           onPress={showDatepicker}
-          title={fecha}
+          title={FechaNacimiento}
         />
 
         <DropDownPicker
@@ -107,7 +107,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
           placeholder="Seleccionar Rubros"
           open={open}
           value={value}
-          items={test.map((item)=> {return ({value: item.Nombre, label: item.Nombre})})}
+          items={test.map((item) => { return ({ value: item.Nombre, label: item.Nombre }) })}
           setOpen={setOpen}
           setValue={setValue}
           setItems={setTest}
@@ -116,8 +116,8 @@ const RegistrarseTrabajador = ({ navigation }) => {
 
         <TextInput
           style={styles.dato}
-          onChangeText={text => setUserState({ ...userState, dni: text })}
-          value={userState.dni}
+          onChangeText={text => setUserState({ ...userState, DNI: text })}
+          value={userState.DNI}
           placeholder="Ingrese DNI"
           keyboardType="numeric"
         />
@@ -129,23 +129,26 @@ const RegistrarseTrabajador = ({ navigation }) => {
         <BotonSiguienteRegistrarse
           disable={disable}
           text="SIGUIENTE"
+          
           onPress={async () => {
             setDisable(true)
-            console.log(userState, value, fecha)
-            if (userState.nombre == '' || userState.celular == '' || value == '' || fecha == '' || userState.dni == '')  {//si hay datos incompletos
+            console.log(userState, FechaNacimiento)
+            if (userState.NombreApellido == '' || userState.Celular == '' || value == '' || FechaNacimiento == '' || userState.DNI == '') {//si hay datos incompletos
               setError(true)
             }
-            else {//si hay datos completos}
-              console.log(userState, value, fecha)
-              await postDatosPersonales(userState, fecha).then(() => {
-                setDisable(false)
-                navigation.navigate('HomeTrabajador')
-
-              })
-                .catch((err) => {
-                  console.error("todo bien 7", err)
+            else {//si hay datos completos
+              try {
+                console.log(userState, FechaNacimiento)
+                await postDatosPersonales(userState, FechaNacimiento)
                   setDisable(false)
-                });
+                  console.log('se mando bien por qué no se fue al catch con un error');
+                  navigation.navigate('HomeTrabajador')
+
+                
+              } catch (err) {
+                console.error("todo mal", err)
+                setDisable(false)
+              };
 
             } setDisable(false)
           }
