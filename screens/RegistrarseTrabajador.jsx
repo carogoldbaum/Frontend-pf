@@ -20,8 +20,6 @@ const RegistrarseTrabajador = ({ navigation }) => {
 
   const [test, setTest] = useState([])
 
-
-
   useEffect(async () => {
     const rta = await getRubro();
     setTest(rta.data);
@@ -36,7 +34,6 @@ const RegistrarseTrabajador = ({ navigation }) => {
   const [error, setError] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
   const [fecha, setFecha] = React.useState('');
-  const [dni, setDNI] = React.useState('');
 
   const [showDate, setShowDate] = React.useState(false);
   const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
@@ -55,16 +52,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
     setDatePickerVisibility(false);
   };
 
-  const probando = () =>{
-    let nombres = []
-    {test.map((x)=>{
-        nombres.push(x.Nombre)
-      })}
-
-    return nombres
-  }
-
-  return test.length ? (
+  return (
     <View>
 
       <ImageBackground source={fondo} style={styles.image}>
@@ -125,14 +113,6 @@ const RegistrarseTrabajador = ({ navigation }) => {
           setItems={setTest}
           onChangeText={text => setUserState({ ...userState, rubro: text })}
         />
-        
-
-        
-        {/* {test.map((x)=>{
-          return(
-            <Text>{x.Nombre}</Text>
-          )
-        })} */}
 
         <TextInput
           style={styles.dato}
@@ -140,7 +120,6 @@ const RegistrarseTrabajador = ({ navigation }) => {
           value={userState.dni}
           placeholder="Ingrese DNI"
           keyboardType="numeric"
-
         />
 
         <Text style={{ marginLeft: '11%', marginRight: '10%', fontSize: 13, top: '9%' }}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
@@ -158,7 +137,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
             }
             else {//si hay datos completos}
               console.log(userState, value, fecha)
-              await postDatosPersonales(userState, value, fecha).then(() => {
+              await postDatosPersonales(userState, fecha).then(() => {
                 setDisable(false)
                 navigation.navigate('HomeTrabajador')
 
@@ -174,9 +153,8 @@ const RegistrarseTrabajador = ({ navigation }) => {
         />
       </ImageBackground>
     </View>
-  ): (<Text>Cargando...</Text>);
+  )
 }
-
 export default RegistrarseTrabajador
 
 const styles = StyleSheet.create({
