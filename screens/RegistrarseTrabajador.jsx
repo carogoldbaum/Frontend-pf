@@ -20,17 +20,12 @@ const RegistrarseTrabajador = ({ navigation }) => {
 
   const [test, setTest] = useState([])
 
-  getRubro().then((data) => {
-    // console.log('getRubro', data.data, 'fin')
-    setTest(data.data)
-  })
 
-  useEffect(() =>{
-    if(test){
-      test.map((x)=>{
-        console.log('adentro del map: ', x.Nombre)
-      })
-  }}, [])
+
+  useEffect(async () => {
+    const rta = await getRubro();
+    setTest(rta.data);
+  }, [])
 
   const [userState, setUserState] = useState({
     nombre: '',
@@ -124,8 +119,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
           placeholder="Seleccionar Rubros"
           open={open}
           value={value}
-          items={test.map((item)=>
-            ({value: items.Nombre, label: items.Nombre}))}
+          items={test.map((item)=> {return ({value: item.Nombre, label: item.Nombre})})}
           setOpen={setOpen}
           setValue={setValue}
           setItems={setTest}
