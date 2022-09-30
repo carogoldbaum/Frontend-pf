@@ -40,7 +40,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
 
   const handleConfirm = (date) => {
     const fechar = new Date(date);
-    const ModificarFecha = `${fechar.getFullYear()} ${fechar.getMonth()} ${fechar.getDate()}`
+    const ModificarFecha = fechar.getFullYear() + "-" + (fechar.getMonth() + 1) + "-" + fechar.getDate()
 
     hideDatePicker();
     setFecha(ModificarFecha);
