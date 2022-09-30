@@ -8,27 +8,25 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 import BotonPicker from '../components/BotonDatePicker';
 import { postDatosPersonales } from '../axios/axiosClient';
 import { getRubro } from '../axios/axiosClient';
-import { FlatList } from 'react-native-web';
 
 const RegistrarseTrabajador = ({ navigation }) => {
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
-  const [items, setItems] = useState([
-    { label: 'Electricista', value: 'Electricista' },
-  ]);
-
+  
   const [test, setTest] = useState([])
 
   useEffect(async () => {
     const rta = await getRubro();
     setTest(rta.data);
+    console.log("sdflksdjngfsangñdikdilgfhdudbfnidkf", rta.data)
   }, [])
 
   const [userState, setUserState] = useState({
     NombreApellido: '',
     Celular: '',
     DNI: '',
+    FechaNacimiento: "2022-9-30",
   });
 
   const [error, setError] = React.useState(false);
@@ -43,7 +41,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
     const ModificarFecha = fechar.getFullYear() + "-" + (fechar.getMonth() + 1) + "-" + fechar.getDate()
 
     hideDatePicker();
-    setFecha(ModificarFecha);
+    setUserState({...userState, FechaNacimiento: ModificarFecha});
   };
   const showDatepicker = () => {
     setDatePickerVisibility(true);
@@ -132,19 +130,23 @@ const RegistrarseTrabajador = ({ navigation }) => {
           
           onPress={async () => {
             setDisable(true)
-            console.log(userState, FechaNacimiento)
-            if (userState.NombreApellido == '' || userState.Celular == '' || value == '' || FechaNacimiento == '' || userState.DNI == '') {//si hay datos incompletos
+            console.log(userState, value)
+
+            const rubroConEseNombre = test.filter(r => r.Nombre === value)[0]
+            const idRubro = rubroConEseNombre.idRubros
+            console.log(rubroConEseNombre, idRubro)
+
+            if (userState.NombreApellido == '' || userState.Celular == '' || value == '' || userState.FechaNacimiento == '' || userState.DNI == '') {//si hay datos incompletos
               setError(true)
             }
             else {//si hay datos completos
               try {
-                console.log(userState, FechaNacimiento)
-                await postDatosPersonales(userState, FechaNacimiento)
+                console.log(userState, value)
+                await postDatosPersonales(userState, idRubro)
                   setDisable(false)
                   console.log('se mando bien por qué no se fue al catch con un error');
                   navigation.navigate('HomeTrabajador')
 
-                
               } catch (err) {
                 console.error("todo mal", err)
                 setDisable(false)

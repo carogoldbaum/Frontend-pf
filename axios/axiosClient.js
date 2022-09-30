@@ -1,12 +1,13 @@
 import axios from "axios";
 
 const axiosClient = axios.create ({
-    baseURL:"localhost:3000",
+    baseURL:"http://localhost:3000",
 
 })
 
 export const getRubro = async () => {
-    return axiosClient.get('/rubros/rubro')
+    console.log("llegooooo")
+    return axiosClient.get('/rubro/rubro')
     
 }
 
@@ -20,8 +21,8 @@ export const postIniciarSesion = async (informacion2) => {
     return axiosClient.post('/usuario/IniciarSesion', informacion2)
 }
 
-export const postDatosPersonales = async () => {
-    return axiosClient.post('/usuario/DatosPersonales')
+export const postDatosPersonales = async (informacion4) => {
+    return axiosClient.post('/usuario/DatosPersonales',informacion2 )
 
 }
 
