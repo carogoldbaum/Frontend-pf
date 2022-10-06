@@ -4,6 +4,7 @@ import SiguientBotonSiguienteRegistrarseeRegistrarse from "../components/BotonSi
 import fondo from "../assets/fondo.jpg";
 import BotonSiguienteRegistrarse from "../components/BotonSiguienteRegistrarse";
 import { postRestablecer } from '../axios/axiosClient';
+import { getMailDiferente } from '../axios/axiosClient';
 
 const RestablecerContraseña = ({ navigation }) => {
   const [userState, setUserState] = useState({
@@ -13,6 +14,7 @@ const RestablecerContraseña = ({ navigation }) => {
   });
   const [error, setError] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
+
   return (
 
     <View>
@@ -51,22 +53,25 @@ const RestablecerContraseña = ({ navigation }) => {
           text="SIGUIENTE"
           onPress={async () => {
             setDisable(true)
-       
+
             if (userState.email == '' || userState.password2 == '' || userState.password3 == '') { //si hay datos incompletos
               setError(true)
-             
-            } else if (userState.password2 === userState.password3) {//si datos completos
-        
-              await postRestablecer(userState).then(() => {
-              
-                setDisable(true)
-                setError(false)
-                navigation.navigate('IniciarSesion')
+              console.error("boton errrorrrrrr", err)
 
-              }) .catch((err) => {
-                console.error("todo bien 7", err)
-                setDisable(false)
-              });
+            } else if (userState.password2 === userState.password3) {//si datos completos
+              try {
+              console.log('se mando bien por qué no se fue al catch con un error')
+              await postRestablecer(userState)
+
+              setDisable(true)
+              setError(false)
+              navigation.navigate('IniciarSesion')
+
+              }catch(err){
+                  setError(true)
+                  console.error("todo bien 7", err)
+                  setDisable(false)
+                };
             }
             setDisable(false)
           }

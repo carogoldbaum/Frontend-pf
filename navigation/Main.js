@@ -11,6 +11,7 @@ import SeleccionarComoIngresar from "../screens/SeleccionarComoIngresar";
 import RegistrarseContratador from "../screens/RegistrarseContratador";
 import HomeContratador from "../screens/HomeContratador";
 import HomeTrabajador from "../screens/HomeTrabajador"
+import ListaTrabajadores from "../screens/ListaTrabajadores"
 
 const Stack = createNativeStackNavigator();
 
@@ -62,6 +63,11 @@ const Main = () => {
         name="HomeTrabajador" 
         component={HomeTrabajador} 
         />
+         <Stack.Screen 
+        name="ListaTrabajadores" 
+        component={ListaTrabajadores} 
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -27,6 +27,7 @@ const RegistrarseTrabajador = ({ navigation }) => {
     Celular: '',
     DNI: '',
     FechaNacimiento: "2022-9-30",
+    idRubro:'',
   });
 
   const [error, setError] = React.useState(false);
@@ -133,8 +134,8 @@ const RegistrarseTrabajador = ({ navigation }) => {
             console.log(userState, value)
 
             const rubroConEseNombre = test.filter(r => r.Nombre === value)[0]
-            const idRubro = rubroConEseNombre.idRubros
-            console.log(rubroConEseNombre, idRubro)
+            userState.idRubro = rubroConEseNombre.idRubros
+            console.log(rubroConEseNombre, userState.idRubro)
 
             if (userState.NombreApellido == '' || userState.Celular == '' || value == '' || userState.FechaNacimiento == '' || userState.DNI == '') {//si hay datos incompletos
               setError(true)
@@ -142,12 +143,13 @@ const RegistrarseTrabajador = ({ navigation }) => {
             else {//si hay datos completos
               try {
                 console.log(userState, value)
-                await postDatosPersonales(userState, idRubro)
+                await postDatosPersonales(userState)
                   setDisable(false)
                   console.log('se mando bien por qué no se fue al catch con un error');
                   navigation.navigate('HomeTrabajador')
 
               } catch (err) {
+                setError(true)
                 console.error("todo mal", err)
                 setDisable(false)
               };

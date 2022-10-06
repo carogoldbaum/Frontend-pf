@@ -1,122 +1,201 @@
 import React, { Component, useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Date, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, onChangeDate, number, TextInput, onChangeText, onChangeNumber, String, ImageBackground, Button, Alert } from 'react-native';
 import BotonSiguienteRegistrarse from "../components/BotonSiguienteRegistrarse";
 import fondo from "../assets/fondo.jpg";
+import SelectDropdown from 'react-native-select-dropdown';
+import DropDownPicker from 'react-native-dropdown-picker';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import BotonPicker from '../components/BotonDatePicker';
+import { postDatosPersonales } from '../axios/axiosClient';
+import { getRubro } from '../axios/axiosClient';
 
-const RegistrarseContratador =({navigation})=>{
+const RegistrarseContratador = ({ navigation }) => {
+
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
 
   const [userState, setUserState] = useState({
-    nombre: '',
-    celular: '',
-    fecha: ''
+    NombreApellido: '',
+    Celular: '',
+    DNI: '',
+    FechaNacimiento: "2022-9-30",
   });
+
   const [error, setError] = React.useState(false);
   const [disable, setDisable] = React.useState(false);
+  const [FechaNacimiento, setFecha] = React.useState('');
 
-    return (
-      
-      <View>
+  const [showDate, setShowDate] = React.useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = React.useState(false);
 
-            <ImageBackground source={fondo} style={styles.image}>
+  const handleConfirm = (date) => {
+    const fechar = new Date(date);
+    const ModificarFecha = fechar.getFullYear() + "-" + (fechar.getMonth() + 1) + "-" + fechar.getDate()
 
-            <Text style={styles.titulo}>Datos personales</Text>
+    hideDatePicker();
+    setUserState({...userState, FechaNacimiento: ModificarFecha});
+  };
+  const showDatepicker = () => {
+    setDatePickerVisibility(true);
+  };
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
 
-            <TextInput   
-              style={styles.dato}
-              onChangeText={text => setUserState({ ...userState, nombre: text })}
-              value={userState.nombre}
-              placeholder="Nombre y Apellido"
-              
-            />
-            <TextInput
-              style={styles.dato}
-              onChangeText={text => setUserState({ ...userState, celular: text })}
-              value={userState.celular}
-              placeholder="Número de Celular"
-              keyboardType="numeric"
-            />
-            <TextInput   
-              style={styles.dato}
-              onChangeText={text => setUserState({ ...userState, fecha: text })}
-              value={userState.fecha}
-              placeholder="DD/MM/AA"
-              
-            />
-             <TextInput   
-              style={styles.dato}
-              onChangeText={onChangeText}
-              value={String}
-              placeholder="Insertar foto de DNI"
-            />
-          
-            <Text style={{ marginLeft:'11%', marginRight:'10%', fontSize: 13,  top: '9%'}}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>  
-           
-            {error && <Text style={styles.alerta}>Completar datos</Text>}
+  return (
+    <View>
+
+      <ImageBackground source={fondo} style={styles.image}>
+
+        <Text style={styles.titulo}>Datos personales</Text>
+
+        <TextInput
+          style={styles.dato}
+          onChangeText={text => setUserState({ ...userState, NombreApellido: text })}
+          value={userState.NombreApellido}
+          placeholder="Nombre y Apellido"
+
+        />
+        <TextInput
+          style={styles.dato}
+          onChangeText={text => setUserState({ ...userState, Celular: text })}
+          value={userState.Celular}
+          placeholder="Número de Celular"
+          keyboardType="numeric"
+        />
+
+        <DateTimePickerModal
+          style={styles.datePickerStyle}
+          isVisible={isDatePickerVisible}
+          mode="date" // The enum of date, datetime and time
+          onChangeText={text => setUserState({ ...userState, FechaNacimiento: text })}
+          value={userState.FechaNacimiento}
+          onConfirm={handleConfirm}
+          onCancel={hideDatePicker}
+        />
+
+        <BotonPicker
+          placeholder="Seleccionar fecha nacimineto"
+          style={{
+            fontSize: 18,
+            marginTop: '5%',
+            marginLeft: '0%',
+            width: '80%',
+            alignItems: 'center',
+            borderWidth: 2,
+            padding: '3%',
+            top: '8%',
+            backgroundColor: '#F4F4F4',
+          }}
+
+          onPress={showDatepicker}
+          title={FechaNacimiento}
+        />
+
+        <TextInput
+          style={styles.dato}
+          onChangeText={text => setUserState({ ...userState, DNI: text })}
+          value={userState.DNI}
+          placeholder="Ingrese DNI"
+          keyboardType="numeric"
+        />
+
+        <Text style={{ marginLeft: '11%', marginRight: '10%', fontSize: 13, top: '9%' }}>By singing up, you agree to Photo's Terms of service and Privacy Policy</Text>
+
+        {error && <Text style={styles.alerta}>Completar datos</Text>}
 
         <BotonSiguienteRegistrarse
-            text="SIGUIENTE" 
-            onPress={async () =>{
-              setDisable(true)
-              if (userState.nombre==''||userState.celular==''||userState.fecha==''){
+          disable={disable}
+          text="SIGUIENTE"
+          
+          onPress={async () => {
+            setDisable(true)
+            console.log(userState, value)
+
+            if (userState.NombreApellido == '' || userState.Celular == '' || userState.FechaNacimiento == '' || userState.DNI == '') {//si hay datos incompletos
+              setError(true)
+            }
+            else {//si hay datos completos
+              try {
+                console.log(userState, value)
+                await postDatosPersonales(userState)
+                  setDisable(false)
+                  console.log('se mando bien por qué no se fue al catch con un error');
+                  navigation.navigate('HomeTrabajador')
+
+              } catch (err) {
                 setError(true)
-              }
-                else {
-                  //await PostLogIn(userState).then(() => {
-                      setDisable(false)
-                      navigation.navigate('Inicio')
-                    
-                  //})
-                  //.catch(() => {
-                    //console.log("Datos mal")
-                    //setError(true)
-                   // setDisable(false)
-               // });
-              
-          }setDisable(false)
-        }
-      }  
+                console.error("todo mal", err)
+                setDisable(false)
+              };
+
+            } setDisable(false)
+          }
+          }
         />
-        </ImageBackground>
+      </ImageBackground>
     </View>
-  );  
-  }
-  
-  export default RegistrarseContratador
-  
-  const styles = StyleSheet.create({
-   
-    titulo: {
-      top: '8%',
-      marginLeft:'-13%',
-      fontSize: 34,
+  )
+}
+export default RegistrarseContratador
 
-      },
+const styles = StyleSheet.create({
 
-    dato: {
-      fontSize: 18,
-        marginTop:'5%',
-        marginLeft:'0%',
-        width: '80%',
-        alignItems: 'center',
-        borderWidth: 2,
-        padding:'3%',
-        top: '8%',
-        backgroundColor: '#F4F4F4',
+  titulo: {
+    top: '8%',
+    marginLeft: '-13%',
+    fontSize: 34,
+  },
 
-      },
-    
-      image: {
-        height:'100%',
-        width: '100%',
-        alignItems: 'center',
-        
-      },
-   
-      alerta: {
-        color: 'black',
-        textAlign: 'center',
-        top: '9%',
-        fontSize: 20,
-        width: '100%'
-        },
-  });
+  dato: {
+    fontSize: 18,
+    marginTop: '5%',
+    marginLeft: '0%',
+    width: '80%',
+    alignItems: 'center',
+    borderWidth: 2,
+    padding: '3%',
+    top: '8%',
+    backgroundColor: '#F4F4F4',
+  },
+
+  DropDownPicker: {
+    fontSize: 18,
+    marginTop: '5%',
+    marginLeft: '10%',
+    width: '80%',
+    alignItems: 'center',
+    borderWidth: 2,
+    top: '18%',
+    borderRadius: 0,
+    backgroundColor: '#F4F4F4',
+  },
+
+  image: {
+    height: '100%',
+    width: '100%',
+    alignItems: 'center',
+  },
+
+  alerta: {
+    color: 'black',
+    textAlign: 'center',
+    top: '9%',
+    fontSize: 20,
+    width: '100%'
+  },
+
+  container: {
+    flex: 1,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  title: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    padding: 20,
+  },
+});
