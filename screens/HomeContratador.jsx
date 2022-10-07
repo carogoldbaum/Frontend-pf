@@ -11,6 +11,14 @@ import BotonAlbañil from '../components/BotonAlbañil';
 import BotonLimpieza from '../components/BotonLimpieza';
 import BotonProfesor from '../components/BotonProfesor';
 import NavBarContratador from '../components/NavBarContratador';
+import BotonTransProfesor from "../components/BotonTransProfesor"
+import BotonTransPintor from "../components/BotonTransPintor"
+import BotonTransPlomero from "../components/BotonTransPlomero"
+import BotonTransGasista from "../components/BotonTransGasista"
+import BotonTransElectricista from "../components/BotonTransElectricista"
+import BotonTransNiñera from "../components/BotonTransNiñera"
+import BotonTransAlbañil from "../components/BotonTransAlbañil"
+import BotonTransLimpieza from "../components/BotonTransLimpieza"
 
 const HomeContratador = ({ navigation }) => {
 
@@ -19,62 +27,57 @@ const HomeContratador = ({ navigation }) => {
 
             <Text style={styles.titulo}>Rubros</Text>
             <View style={{ borderBottomColor: 'black', borderWidth: 0.7, width: '100%', marginBottom: '10%', marginTop: '-10%', top: '56%', }}></View>
+
             <BotonPlomero
                 text="Plomero"
+            />
+            <BotonTransPlomero
                 onPress={() => {
                     navigation.navigate('ListaTrabajadores')
                 }}
             />
+
             <BotonPintor
                 text="Pintor"
+            />
+            <BotonTransPintor
                 onPress={() => {
                     navigation.navigate('ListaTrabajadores')
                 }}
             />
+
             <BotonGasista
                 text="Gasista"
-                onPress={() => {
-                    navigation.navigate('ListaTrabajadores')
-                }}
             />
+
+
             <BotonElectricista
                 text="Electricista"
-                onPress={() => {
-                    navigation.navigate('ListaTrabajadores')
-                }}
             />
+
             <BotonNiñera
                 text="Niñera"
-                onPress={() => {
-                    navigation.navigate('ListaTrabajadores')
-                }}
             />
+
+
             <BotonAlbañil
                 text="Albañil"
-                onPress={() => {
-                    navigation.navigate('ListaTrabajadores')
-                }}
             />
+
+
             <BotonLimpieza
                 text="Limpieza"
-                onPress={() => {
-                    navigation.navigate('ListaTrabajadores')
-                }}
             />
+
+
             <BotonProfesor
                 text="Profesor"
-                onPress={() => {
-                    navigation.navigate('ListaTrabajadores')
-                }}
             />
 
             <NavBarContratador />
-
         </View>
     );
-
 }
-
 export default HomeContratador
 
 const styles = StyleSheet.create({
@@ -86,5 +89,4 @@ const styles = StyleSheet.create({
         alignItems: 'center'
 
     },
-
 });

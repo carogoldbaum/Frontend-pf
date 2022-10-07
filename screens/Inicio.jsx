@@ -21,7 +21,7 @@ const Inicio =({navigation})=>{
         <BotonIniciarSesionInicio style={{ fontSize: 48}}
           text="INICIAR SESION" 
           onPress={ () =>{
-          navigation.navigate('IniciarSesion')
+          navigation.navigate('HomeContratador')
         }}
         />
         <BotonRegistrarseInicio

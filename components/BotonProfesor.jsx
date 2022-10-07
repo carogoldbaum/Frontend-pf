@@ -6,12 +6,12 @@ import profesor from "../assets/profesor.png";
     return (
        
           <View >
+
             <Image style={styles.RoundButton10} source={profesor}></Image>
         
             <Text style={styles.Texto}>Profesor</Text>
 
           </View>
-  
     )
   }
 
