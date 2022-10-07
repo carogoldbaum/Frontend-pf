@@ -16,11 +16,11 @@ const RegistrarseTrabajador = ({ navigation }) => {
   
   const [test, setTest] = useState([])
 
-  useEffect(async () => {
+ /* useEffect(async () => {
     const rta = await getRubro();
     setTest(rta.data);
     console.log("sdflksdjngfsangñdikdilgfhdudbfnidkf", rta.data)
-  }, [])
+ }, [])*/
 
   const [userState, setUserState] = useState({
     NombreApellido: '',

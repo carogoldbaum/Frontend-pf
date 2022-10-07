@@ -11,69 +11,34 @@ import BotonAlbañil from '../components/BotonAlbañil';
 import BotonLimpieza from '../components/BotonLimpieza';
 import BotonProfesor from '../components/BotonProfesor';
 import NavBarContratador from '../components/NavBarContratador';
-import BotonTransProfesor from "../components/BotonTransProfesor"
-import BotonTransPintor from "../components/BotonTransPintor"
-import BotonTransPlomero from "../components/BotonTransPlomero"
-import BotonTransGasista from "../components/BotonTransGasista"
-import BotonTransElectricista from "../components/BotonTransElectricista"
-import BotonTransNiñera from "../components/BotonTransNiñera"
-import BotonTransAlbañil from "../components/BotonTransAlbañil"
-import BotonTransLimpieza from "../components/BotonTransLimpieza"
+import BotonRubro from "../components/BotonRubro"
+
+import {getRubro} from "../axios/axiosClient"
+
+const [rubro, setRubro] = useState([])
 
 const HomeContratador = ({ navigation }) => {
 
+    //useEffect(async () => {
+      //  const rta = await getRubro();
+       // setRubro(rta.data);
+       // console.log("sdflksdjngfsangñdikdilgfhdudbfnidkf", rta.data)
+      //}, [])
+    
     return (
         <View>
 
             <Text style={styles.titulo}>Rubros</Text>
             <View style={{ borderBottomColor: 'black', borderWidth: 0.7, width: '100%', marginBottom: '10%', marginTop: '-10%', top: '56%', }}></View>
 
-            <BotonPlomero
-                text="Plomero"
-            />
-            <BotonTransPlomero
+            <BotonRubro
+                text={rubro.Nombre}
+                image={rubro.Imagen}
                 onPress={() => {
                     navigation.navigate('ListaTrabajadores')
                 }}
             />
-
-            <BotonPintor
-                text="Pintor"
-            />
-            <BotonTransPintor
-                onPress={() => {
-                    navigation.navigate('ListaTrabajadores')
-                }}
-            />
-
-            <BotonGasista
-                text="Gasista"
-            />
-
-
-            <BotonElectricista
-                text="Electricista"
-            />
-
-            <BotonNiñera
-                text="Niñera"
-            />
-
-
-            <BotonAlbañil
-                text="Albañil"
-            />
-
-
-            <BotonLimpieza
-                text="Limpieza"
-            />
-
-
-            <BotonProfesor
-                text="Profesor"
-            />
-
+          
             <NavBarContratador />
         </View>
     );
