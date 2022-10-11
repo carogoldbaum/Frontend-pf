@@ -13,35 +13,7 @@ const NavBarTrabajador = (props) => {
 
     return (
     
-         <View >
-              
-           {/*
-             <BotonHome 
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        />  
-          <BotonLupa
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        />  
-        <BotonAgenda 
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        />  
-           <BotonChats 
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        /> 
-        <BotonProfile 
-                onPress={ () =>{
-                navigation.navigate('')
-        }}
-        /> 
-           */}   
+         <View > 
       
       <Image style={styles.ButtonHome} source={HomeIcon}></Image>
       
@@ -59,7 +31,6 @@ const NavBarTrabajador = (props) => {
 }
 
 export default NavBarTrabajador
-
 
 const styles = StyleSheet.create({
 

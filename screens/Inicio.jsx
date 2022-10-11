@@ -9,31 +9,31 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const Inicio =({navigation})=>{
-  
+
   return (
-    
+
     <View>
 
       <ImageBackground source={fondo} style={styles.image}>
-        
+
         <LogoTextoInicio/>
 
         <BotonIniciarSesionInicio style={{ fontSize: 48}}
-          text="INICIAR SESION" 
+          text="INICIAR SESION"
           onPress={ () =>{
-          navigation.navigate('HomeContratador')
+          navigation.navigate('IniciarSesion')
         }}
         />
         <BotonRegistrarseInicio
-          text="REGISTRARSE" 
+          text="REGISTRARSE"
           onPress={ () =>{
           navigation.navigate('Registrarse')
         }}
         />
-   
+
       </ImageBackground>
     </View>
-    
+
   );
 }
 
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     height:'100%',
     width: '100%',
     alignItems: 'center',
-    
+
   },
 });
 

@@ -6,9 +6,6 @@ import EspacioTransTrabajosPendientes from "../components/EspacioTransTrabajosPe
 import BotonSolicitudesDeTrabajoHomeTrabajador from '../components/BotonSolicitudesDeTrabajoHomeTrabajador';
 import { useNavigation } from '@react-navigation/native';
 import TituloHomeTrabajador from "../components/TituloHomeTrabajador";
-
-import NavBarTrabajador from '../components/NavBarTrabajador';
-
 const HomeTrabajador =({navigation})=>{
 
 
@@ -25,19 +22,17 @@ const HomeTrabajador =({navigation})=>{
                 onPress={ () =>{
                 navigation.navigate('Inicio')
                 }}
-                
+
             />
 
             <BotonTrabajosPendientes/>
 
-            <EspacioTransTrabajosPendientes 
+            <EspacioTransTrabajosPendientes
                 onPress={ () =>{
                 navigation.navigate('Inicio')
                 }}
-                
-            />
 
-            <NavBarTrabajador/>
+            />
         </View>
     );
 }
@@ -50,15 +45,15 @@ const styles = StyleSheet.create({
   diseño: {
     alignItems: 'center',
 
-    
+
   },
   tituloHome: {
     left:'80%',
-   
+
     color: 'black',
     fontSize: 48,
     marginTop:'20%',
-    
+
   },
-    
+
 });

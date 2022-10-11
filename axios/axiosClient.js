@@ -8,7 +8,7 @@ const axiosClient = axios.create ({
 export const getRubro = async () => {
     console.log("llegooooo")
     return axiosClient.get('/rubro/rubro')
-    
+
 }
 
 export const postRegistrarse = async (informacion3) => {
@@ -36,3 +36,9 @@ export const getMailDiferente = async (informacion5) => {
     console.log("llegooooo")
     return axiosClient.get('/usuario/MailDiferente', informacion5)
 }
+
+export const BuscarTrabajadores = async (informacion6) => {
+    console.log("InfoTrabajador",informacion6)
+    return axiosClient.get('/postulantesRubros/BuscarTrabajadores', informacion6)
+}
+

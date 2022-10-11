@@ -1,7 +1,5 @@
 import React from 'react';
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native';
-
-
 import ChatsIcon from "../assets/ChatIcon.png";
 import HomeIcon from "../assets/HomeIcon.png";
 import SearchIcon from "../assets/SearchIcon.png";
@@ -14,9 +12,6 @@ const NavBarContratador = (props) => {
     return (
     
          <View >
-              
-              
-              
               <Image style={styles.ButtonChats} source={ChatsIcon}></Image>
 
               <Image style={styles.ButtonHome} source={HomeIcon}></Image>
@@ -24,10 +19,8 @@ const NavBarContratador = (props) => {
               <Image style={styles.ButtonLupa} source={SearchIcon}></Image>
 
               <Image style={styles.BotonProfile} source={ProfileIcon}></Image>
-        
 
-         </View>
-       
+         </View>     
     )
 }
 
