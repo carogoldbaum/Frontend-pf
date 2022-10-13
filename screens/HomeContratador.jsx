@@ -14,15 +14,19 @@ const HomeContratador = ({ navigation }) => {
 
     return (
         <View>
+       
             <Text style={styles.titulo}>Rubros</Text>
             <View style={{ borderBottomColor: 'black', borderWidth: 0.7, width: '100%', marginBottom: '10%', marginTop: '-10%'}}></View>
 
             <FlatList
                 data={rubro}
+              
                 renderItem={({ item }) => <BotonRubro text={item.Nombre} image={item.Imagen}  onPress={() => {
-                    navigation.navigate('ListaTrabajadores', item.idRubros)
+                    navigation.navigate('ListaTrabajadores', {id: item.idRubros})
                 }} />}
+                
                 numColumns={2}
+                
                 keyExtractor={item => item.idRubros}
             />
         </View>
