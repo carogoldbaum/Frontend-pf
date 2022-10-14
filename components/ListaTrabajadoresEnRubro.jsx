@@ -4,7 +4,7 @@ import { Text, StyleSheet, TouchableOpacity, Image, View } from 'react-native';
 const ListaTrabajadoresEnRubro = (props) => {
     const { text, image, onPress} = props
     return (
-        <TouchableOpacity style={styles.BotonRubro} onPress={onPress}>
+        <TouchableOpacity style={styles.BotonRubro} onPress={ onPress}>
             
             <Image style={styles.RoundButton3} source={{ uri: image }}/>
             <Text style={styles.Texto}>{text}</Text>

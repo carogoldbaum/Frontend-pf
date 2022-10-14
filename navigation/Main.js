@@ -12,6 +12,7 @@ import RegistrarseContratador from "../screens/RegistrarseContratador";
 import HomeContratador from "../screens/HomeContratador";
 import HomeTrabajador from "../screens/HomeTrabajador"
 import ListaTrabajadores from "../screens/ListaTrabajadores"
+import ContratarTrabajadores from "../screens/ContratarTrabajadores"
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {Image, StyleSheet} from "react-native";
 import ChatsIcon from "../assets/ChatIcon.png";
@@ -76,7 +77,10 @@ const Main = () => {
         name="ListaTrabajadores"
         component={ListaTrabajadores}
         />
-
+           <Stack.Screen
+        name="ContratarTrabajadores"
+        component={ContratarTrabajadores}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -142,7 +146,6 @@ function MyTabs (){
        </Tab.Navigator>
    );
 }
-
 
 const styles = StyleSheet.create({
 

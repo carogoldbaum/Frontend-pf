@@ -41,3 +41,8 @@ export const BuscarTrabajadores = async (informacion6) => {
     console.log("InfoTrabajador",informacion6)
     return axiosClient.get(`/postulantesRubros/BuscarTrabajadores/${informacion6}`)
 }
+
+export const InsertarPostulanteContratado = async (informacion7) => {
+    console.log("fdhgfffffffffffffffffffffffffffff",informacion7)
+    return axiosClient.post(`/postulantes/InsertarPostulanteContratado`, informacion7)
+}

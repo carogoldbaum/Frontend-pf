@@ -30,12 +30,12 @@ const ListaTrabajadores = ({ navigation, route }) => {
             text={item.NombreApellido}
             image={item.Foto}
             onPress={() => {
-              navigation.navigate("Inicio");
+              navigation.navigate('ContratarTrabajadores', {ida: item.IdUsuario})
             }}
           />
         )}
         numColumns={1}
-        keyExtractor={(item) => item.NombreApellido}
+        keyExtractor={(item) => item.IdUsuario}
       />
       :
       <>
