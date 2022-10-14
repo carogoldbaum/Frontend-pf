@@ -39,6 +39,5 @@ export const getMailDiferente = async (informacion5) => {
 
 export const BuscarTrabajadores = async (informacion6) => {
     console.log("InfoTrabajador",informacion6)
-    return axiosClient.get('/postulantesRubros/BuscarTrabajadores', informacion6)
+    return axiosClient.get(`/postulantesRubros/BuscarTrabajadores/${informacion6}`)
 }
-

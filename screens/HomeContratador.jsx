@@ -16,6 +16,7 @@ const HomeContratador = ({ navigation }) => {
         <View>
        
             <Text style={styles.titulo}>Rubros</Text>
+     
             <View style={{ borderBottomColor: 'black', borderWidth: 0.7, width: '100%', marginBottom: '10%', marginTop: '-10%'}}></View>
 
             <FlatList
